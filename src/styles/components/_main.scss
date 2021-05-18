@@ -1,0 +1,99 @@
+.main__wrapper {
+  background-image: url('../../assets/palm.jpg');
+  background-size: cover;
+  height: 40rem;
+  padding: 0 40px;
+
+  &-box {
+    margin-top: 130px;
+  }
+}
+
+.bottom__wrapper {
+  background-image: url('../../assets/palm.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+
+  & > h1 {
+    font-size: 24px;
+  }
+}
+
+.footer__icons {
+  & > svg {
+    &:hover {
+      color: $primary;
+      transition: all 0.3s linear;
+    }
+  }
+}
+
+.main-btn {
+  padding: 15px 45px;
+  color: white;
+  font-weight: 600;
+  border-radius: 30px;
+  background-color: $primary;
+
+  &:hover {
+    background-color: $primary-light;
+    transition: all 0.3s linear;
+  }
+}
+
+.header-btn {
+  padding: 10px 20px;
+  color: white;
+  background-color: $gray-800;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.bg-blue-prime {
+  background-color: $blue-prime;
+}
+.info__wrapper {
+  padding: 20px 40px;
+
+  @media screen and (max-width: 768px) {
+    &-image {
+      & > img {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+
+    &-info {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  &-image {
+    &-first {
+      height: 500px;
+    }
+  }
+
+  &-info {
+    max-width: 400px;
+  }
+}
+
+.card-rounded-image {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+
+.infoCarousel__wrapper {
+  &-desc-info {
+    max-width: 600px;
+  }
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: $primary !important;
+}
