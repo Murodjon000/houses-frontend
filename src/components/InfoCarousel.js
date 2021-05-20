@@ -40,7 +40,7 @@ const InfoCarousel = () => (
       </div>
       <div className="carousel-inner p-4">
         <div className="carousel-item active">
-          <div className="shadow-lg rounded infoCarousel__wrapper-desc-info p-4 mx-auto ">
+          <div className="shadow rounded infoCarousel__wrapper-desc-info p-4 mx-auto ">
             <img
               src={man}
               className="d-block mx-auto card-rounded-image"
@@ -55,7 +55,7 @@ const InfoCarousel = () => (
           </div>
         </div>
         <div className="carousel-item">
-          <div className="shadow-lg rounded  infoCarousel__wrapper-desc-info p-4 mx-auto">
+          <div className="shadow rounded  infoCarousel__wrapper-desc-info p-4 mx-auto">
             <img
               src={man2}
               className="d-block mx-auto card-rounded-image"
@@ -70,7 +70,7 @@ const InfoCarousel = () => (
           </div>
         </div>
         <div className="carousel-item">
-          <div className="shadow-lg rounded infoCarousel__wrapper-desc-info p-4 mx-auto">
+          <div className="shadow rounded infoCarousel__wrapper-desc-info p-4 mx-auto">
             <img
               src={women}
               className="d-block mx-auto card-rounded-image my-2"
