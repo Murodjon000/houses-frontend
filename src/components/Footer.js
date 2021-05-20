@@ -9,7 +9,9 @@ const Footer = () => {
   return (
     <div className="d-flex flex-column py-5 ">
       <div>
-        <h1 className="fs-2 text-center fw-bolder mt-2">HouseNet</h1>
+        <h1 className="text-font-md text-decoration-none text-center font-weight-bolder mt-2">
+          HouseNet
+        </h1>
         <p className="text-center text-sm-gray my-3">
           Karimov Ave 126, Termez, Surkhandarya, UZB
         </p>
@@ -17,7 +19,7 @@ const Footer = () => {
       <div className="mx-auto">
         <button
           className="bg-transparent footer__icons"
-          onClik={github}
+          onClick={github}
           type="button"
         >
           <svg
@@ -33,7 +35,7 @@ const Footer = () => {
         </button>
         <button
           className="bg-transparent mx-3 footer__icons"
-          onClik={linkedin}
+          onClick={linkedin}
           type="button"
         >
           <svg
@@ -49,7 +51,7 @@ const Footer = () => {
         </button>
         <button
           className="bg-transparent footer__icons"
-          onClik={me}
+          onClick={me}
           type="button"
         >
           <svg
