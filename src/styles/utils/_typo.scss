@@ -10,3 +10,33 @@
 .text-sm-gray {
   color: $gray-400;
 }
+
+.text-primary {
+  color: $primary !important;
+  cursor: pointer;
+  transition: all 0.3s linear;
+
+  &:hover {
+    color: $primary-light !important;
+  }
+}
+
+.text-hover {
+  cursor: pointer;
+  transition: all 0.3s linear;
+  &:hover {
+    color: $primary-light !important;
+  }
+}
+
+.text-font-md {
+  font-size: 28px;
+}
+
+.primary-shadow {
+  box-shadow: rgba(236, 82, 0, 0.2) 0 8px 29px 0;
+}
+
+.checked {
+  color: orange;
+}
