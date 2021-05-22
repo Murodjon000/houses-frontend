@@ -31,6 +31,7 @@ const Houses = ({ houses = [], getHouses }) => {
               name={house.attributes.name}
               image={house.attributes.image}
               price={house.attributes.price}
+              id={house.id}
             />
           </Carousel.Item>
         ))}
