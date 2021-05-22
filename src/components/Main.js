@@ -12,8 +12,10 @@ const Main = () => (
     <div className="d-flex main__wrapper flex-column ">
       <Header />
       <div className="main__wrapper-box">
-        <h1 className="fs-1 text-white fw-bold">Find housing</h1>
-        <h1 className="fs-1 text-white fw-bold">anywhere</h1>
+        <h1 className="text-font-lg text-white font-weight-bold">
+          Find housing
+        </h1>
+        <h1 className="text-font-lg text-white font-weight-bold">anywhere</h1>
 
         <p className="text-sm mt-3">
           The best offers for you at any point of your journey.Wher-
