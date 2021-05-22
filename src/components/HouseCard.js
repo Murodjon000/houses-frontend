@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from '@reach/router';
+import formatToCurrency from '../helpers/currency_format';
 
-const HouseCard = ({ name, image, price }) => {
-  const formatToCurrency = (amount) =>
-    '$' + ' ' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'); // eslint-disable-line
+/* eslint-disable */
 
-  return (
+const HouseCard = ({ name, image, price, id }) => (
+  <Link to={`/houses/${id}`}>
     <div className="shadow rounded infoCarousel__wrapper-desc-info mx-auto ">
       <img src={image} className="w-100 border-card" alt="..." />
       <div className="d-flex justify-content-between align-items-center p-3">
@@ -25,19 +26,21 @@ const HouseCard = ({ name, image, price }) => {
         </div>
       </div>
     </div>
-  );
-};
+  </Link>
+);
 
 HouseCard.propTypes = {
   name: PropTypes.string,
   image: PropTypes.string,
   price: PropTypes.number,
+  id: PropTypes.string,
 };
 
 HouseCard.defaultProps = {
   name: '',
   image: '',
   price: 0,
+  id: '',
 };
 
 export default HouseCard;
