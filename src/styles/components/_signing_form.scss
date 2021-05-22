@@ -18,6 +18,14 @@
   width: 450px;
 }
 
+.search-input {
+  padding: 10px 20px;
+  border: 1px solid $gray-300;
+  border-radius: 30px;
+  outline: none;
+  width: 270px;
+}
+
 .carousel-indicators {
   margin-top: 50px;
   & > li {
@@ -31,4 +39,38 @@
 
 .carousel-inner {
   padding-bottom: 50px;
+}
+
+.details-btn {
+  background-color: $primary;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
+  outline: none;
+  transition: all 0.3s linear;
+  &:hover {
+    color: $primary-light;
+    color: white;
+    box-shadow: rgba(236, 82, 0, 0.2) 0 8px 29px 0;
+  }
+}
+
+.user__info {
+  height: 100vh;
+  background-color: #f6fafb;
+}
+
+.user__header {
+  z-index: 1000;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+.favourites__card {
+  max-width: 400px;
+
+  &-btn {
+    right: 0;
+    bottom: 0;
+  }
 }

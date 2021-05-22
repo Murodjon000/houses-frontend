@@ -10,7 +10,8 @@
 }
 
 .bottom__wrapper {
-  background-image: url('../../assets/palm.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
+    url('../../assets/palm.jpg');
   background-size: cover;
   background-position: center;
   height: 180px;
@@ -49,6 +50,11 @@
   border-radius: 30px;
   font-size: 16px;
   font-weight: 600;
+  outline: none;
+
+  &:hover {
+    color: white !important;
+  }
 }
 
 .bg-blue-prime {
