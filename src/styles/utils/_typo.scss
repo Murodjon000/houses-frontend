@@ -33,10 +33,22 @@
   font-size: 28px;
 }
 
+.text-font-lg {
+  font-size: 38px;
+}
+
 .primary-shadow {
   box-shadow: rgba(236, 82, 0, 0.2) 0 8px 29px 0;
 }
 
 .checked {
   color: orange;
+}
+
+.details-card {
+  bottom: 20px;
+}
+
+.bg-dashboard {
+  background-color: #f6fafb;
 }
