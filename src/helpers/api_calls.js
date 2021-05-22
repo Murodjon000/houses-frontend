@@ -7,6 +7,8 @@ const SIGN_UP = 'users';
 const LOG_IN = 'auth';
 const HOUSES = 'houses';
 const USERS = 'users';
+const FAVOURITE = 'favourite';
+const UNFAVOURITE = 'unfavourite';
 
 const authCalls = (authType, user) => {
   let API_END;
@@ -35,28 +37,50 @@ const authCalls = (authType, user) => {
     .catch((error) => console.log(error));
 };
 
-const getUser = async () => {
+const addFavourites = (authType, id) => {
+  let API_END;
+  if (authType === 'favourite') {
+    API_END = FAVOURITE;
+  } else {
+    API_END = UNFAVOURITE;
+  }
+  axios
+    .post(
+      `${API_BASE}${HOUSES}/${id}/${API_END}`,
+      {
+        house_id: id,
+      },
+      { headers: { Authorization: `token ${localStorage.getItem('token')}` } },
+      { withCredentials: true } // eslint-disable-line
+    )
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => console.log(error));
+};
+
+const getUser = async (success) => {
   let userId;
   if (localStorage.getItem('token')) {
     const decode = jwtDecode(localStorage.getItem('token'));
     userId = decode.sub;
   }
-
-  const user = await axios
-    .get(
+  try {
+    const houses = await axios.get(
       `${API_BASE}${USERS}/${userId}`,
       { headers: { Authorization: `token ${localStorage.getItem('token')}` } },
       { withCredentials: true } // eslint-disable-line
-    )
-    .then((response) => response.data)
-    .catch((error) => error);
-  return user;
+    );
+    success(houses.data);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-const apiGetCalls = async (success) => {
+const apiGetCalls = async (success, id = '') => {
   try {
     const houses = await axios.get(
-      `${API_BASE}${HOUSES}`,
+      `${API_BASE}${HOUSES}/${id}`,
       { headers: { Authorization: `token ${localStorage.getItem('token')}` } },
       { withCredentials: true } // eslint-disable-line
     );
@@ -66,4 +90,4 @@ const apiGetCalls = async (success) => {
   }
 };
 
-export { authCalls, getUser, apiGetCalls };
+export { authCalls, getUser, apiGetCalls, addFavourites }; //eslint-disable-line
