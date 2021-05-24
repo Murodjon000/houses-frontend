@@ -8,6 +8,11 @@
   background-size: cover;
   height: 100vh;
   padding: 0 40px;
+
+  & > p {
+    width: 230px;
+    text-align: center;
+  }
 }
 
 .main-input {
@@ -15,7 +20,7 @@
   border: 1px solid $gray-300;
   border-radius: 30px;
   outline: none;
-  width: 450px;
+  width: 300px;
 }
 
 .search-input {
@@ -28,6 +33,7 @@
 
 .carousel-indicators {
   margin-top: 50px;
+
   & > li {
     background-color: $primary;
   }
@@ -49,6 +55,7 @@
   font-weight: 600;
   outline: none;
   transition: all 0.3s linear;
+
   &:hover {
     color: $primary-light;
     color: white;
@@ -57,7 +64,7 @@
 }
 
 .user__info {
-  height: 100vh;
+  min-height: 100vh;
   background-color: #f6fafb;
 }
 

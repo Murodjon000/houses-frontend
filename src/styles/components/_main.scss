@@ -120,3 +120,24 @@
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
   background-color: white;
 }
+
+.navbar__right {
+  justify-content: flex-end;
+
+  & > div {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 576px) {
+    & > div {
+      float: right;
+      margin-top: 15px;
+
+      & > a {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
