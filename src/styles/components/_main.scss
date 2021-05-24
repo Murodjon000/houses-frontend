@@ -8,7 +8,7 @@
     margin-top: 130px;
   }
 }
-
+/* stylelint-disable */
 .bottom__wrapper {
   background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
     url('../../assets/palm.jpg');
@@ -20,6 +20,7 @@
     font-size: 24px;
   }
 }
+/* stylelint-enable */
 
 .footer__icons {
   & > svg {
@@ -60,6 +61,7 @@
 .bg-blue-prime {
   background-color: $blue-prime;
 }
+
 .info__wrapper {
   padding: 20px 40px;
 
@@ -117,7 +119,7 @@
   padding-right: 40px;
   width: 100%;
   z-index: 100;
-  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  box-shadow: rgba(33, 35, 38, 0.1) 0 10px 10px -10px;
   background-color: white;
 }
 

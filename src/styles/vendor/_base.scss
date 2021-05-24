@@ -7,6 +7,7 @@
 /**
  * Removes the default spacing and border for appropriate elements.
  */
+/* stylelint-disable */
 
 blockquote,
 dl,
@@ -34,6 +35,28 @@ button {
         * results in a loss of the default `button` focus styles.
         */
 
+button,
+[role='button'],
+input[type='submit'] {
+  cursor: pointer;
+  font-family: $font-family-default;
+  transition: all 150ms ease-in-out;
+}
+
+button:focus:not([data-focus-visible-added]) {
+  outline: none;
+}
+
+button:disabled,
+button[disabled],
+[role='button']:disabled,
+[role='button'][disabled],
+input:disabled,
+input[disabled] {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
 button:focus {
   outline: 1px dotted;
   outline: 5px auto -webkit-focus-ring-color;
@@ -143,29 +166,6 @@ textarea::placeholder {
   color: $gray-400;
 }
 
-button,
-[role='button'],
-input[type='submit'] {
-  cursor: pointer;
-  font-family: $font-family-default;
-  transition: all 150ms ease-in-out;
-}
-
-button:focus:not([data-focus-visible-added]) {
-  outline: none;
-}
-
-button:disabled,
-button[disabled],
-[role='button']:disabled,
-[role='button'][disabled],
-input:disabled,
-input[disabled] {
-  opacity: 0.5;
-  cursor: default;
-  pointer-events: none;
-}
-
 table {
   border-collapse: collapse;
 }
@@ -264,3 +264,4 @@ video {
   max-width: 100%;
   height: auto;
 }
+/* stylelint-enable */

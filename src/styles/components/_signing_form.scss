@@ -1,3 +1,4 @@
+/* stylelint-disable */
 .signup__wrapper {
   background-image: linear-gradient(
       to bottom,
@@ -14,6 +15,7 @@
     text-align: center;
   }
 }
+/* stylelint-enable */
 
 .main-input {
   padding: 10px 20px;
@@ -70,7 +72,7 @@
 
 .user__header {
   z-index: 1000;
-  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  box-shadow: rgba(33, 35, 38, 0.1) 0 10px 10px -10px;
 }
 
 .favourites__card {
