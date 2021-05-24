@@ -1,0 +1,28 @@
+.houses__wrapper {
+  background-color: #f6fafb;
+  height: 100%;
+  padding: 10px;
+}
+
+.spinner__wrapper {
+  height: 100vh;
+}
+
+.alert__wrapper {
+  max-width: 600px;
+  margin: 10px auto;
+  background-color: #d4edda;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 20px;
+  color: black;
+
+  &-auth {
+    max-width: 600px;
+    margin: 10px auto;
+
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 20px;
+  }
+}
