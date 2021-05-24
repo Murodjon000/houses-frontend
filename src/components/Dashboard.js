@@ -1,44 +1,55 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { authSuccess } from '../actions';
-// import { navigate } from '@reach/router';
-import Sidebar from './Sidebar';
+import { navigate } from '@reach/router';
+import { Spinner } from 'react-bootstrap';
+import { getCurrentUser } from '../actions';
+import Header from './DashboardHeader';
 import { addFavourites, getUser } from '../helpers/api_calls';
 import FavouritesCard from './FavouritesCard';
 
 const Dashboard = ({ user, getUserData }) => {
   useEffect(() => {
     getUser(getUserData);
-  }, []);
+  }, [user]);
+
+  if (!localStorage.getItem('token')) {
+    navigate('/');
+  }
 
   if (!user) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="d-flex justify-content-center align-items-center spinner__wrapper">
+        <Spinner animation="border" variant="primary" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>
+    );
   }
 
   const handleRemove = (id) => {
-    addFavourites('unfavourite', id);
+    const messWrapper = document.getElementById('remove-wrapper');
+    addFavourites('unfavourite', id)
+      .then((response) => {
+        if (response.status === 200) {
+          const message = document.createElement('div');
+          message.innerText = 'House successfuly removed from favourites';
+          message.classList.add('alert__wrapper');
+          messWrapper.appendChild(message);
+          setTimeout(() => {
+            message.parentElement.remove();
+          }, 3000);
+        }
+      })
+      .catch((error) => error);
   };
 
-  console.log(user);
   return (
-    <div id="outer-container">
-      <div className="sidebar-wrapper">
-        <Sidebar
-          pageWrapId="page-wrap"
-          outerContainerId="outer-container"
-          name={user.user.username}
-        />
-      </div>
-      <div id="page-wrap">
-        <header className="user__header d-flex px-2 bg-white justify-content-end  py-3 align-items-center ">
-          <div>
-            <input type="text" placeholder="Search" className=" search-input" />
-          </div>
-        </header>
-      </div>
-      <div className="user__info bg-dashboard h-100 p-3">
+    <div>
+      <Header />
+      <div className="user__info p-3">
         <div className="bg-white rounded p-3 mt-4">
+          <div id="remove-wrapper" />
           <h1 className=" text-lg-black my-2">Favourites</h1>
           <div className="row">
             {user.favourites.map((house) => (
@@ -65,11 +76,11 @@ Dashboard.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  user: state.user.user,
+  user: state.user.userData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getUserData: (user) => dispatch(authSuccess(user)),
+  getUserData: (user) => dispatch(getCurrentUser(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
