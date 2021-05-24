@@ -43,7 +43,7 @@
 
 ## Getting Started
 
-- Clone the repo `git@github.com:Murodjon000/Pets.git`
+- Clone the repo `git@github.com:Murodjon000/houses-frontend.git`
 - cd `into` the project
 - Run `git pull origin app`
 - Run `yarn install` or `npm install` to install dependencies
