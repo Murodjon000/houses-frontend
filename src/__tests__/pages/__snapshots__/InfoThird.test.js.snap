@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should correctly render Details page 1`] = `
+<div
+  className="bottom__wrapper d-flex flex-column"
+>
+  <h1
+    className="text-center text-white font-weight-bold my-5"
+  >
+    Be everywhere at home
+  </h1>
+  <div
+    className="mx-auto"
+  >
+    <a
+      className="main-btn my-5"
+      href="/signup"
+      onClick={[Function]}
+    >
+      START FREE
+    </a>
+  </div>
+</div>
+`;

@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should correctly render Details page 1`] = `
+<nav
+  className="d-flex justify-content-between py-3 align-items-center  navbar navbar-expand-sm navbar-light"
+>
+  <div>
+    <a
+      aria-current="page"
+      className="text-font-md text-decoration-none text-white font-weight-bolder  "
+      href="/"
+      onClick={[Function]}
+    >
+      HouseNet
+    </a>
+  </div>
+  <button
+    aria-controls="basic-navbar-nav"
+    aria-label="Toggle navigation"
+    className="navbar-toggler collapsed"
+    onClick={[Function]}
+    type="button"
+  >
+    <span
+      className="navbar-toggler-icon"
+    />
+  </button>
+  <div
+    aria-expanded={null}
+    className="navbar__right navbar-collapse collapse"
+    id="basic-navbar-nav"
+  >
+    <div
+      className=""
+    >
+      <a
+        className="px-4  text-white text-decoration-none font-weight-bolder text-uppercase "
+        href="/login"
+        onClick={[Function]}
+      >
+        Sign in
+      </a>
+      <a
+        className="header-btn  text-uppercase"
+        href="/signup"
+        onClick={[Function]}
+      >
+        Sign up
+      </a>
+    </div>
+  </div>
+</nav>
+`;
