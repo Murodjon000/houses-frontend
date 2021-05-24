@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Find your house
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- This the the frontend part for the capstone project of Microverse main technical curriculum.
+  This project is an house finding app where users are able to see a list of different types of houses and can add them to their favourites. Users can see the details of a particular house by clicking the houses.
 
-## Available Scripts
+### Main page
 
-In the project directory, you can run:
+![Photo](./main.png)
 
-### `yarn start`
+### Houses page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Photo](./house.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Dashboard
 
-### `yarn test`
+![Photo](./favourite.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Live Demo
 
-### `yarn build`
+- [Live](https://pets-finder.netlify.app/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Main Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- A proper authentication system has been implemented using JWT and Devise Warden.Users can sign up and login to the app.
+- User can see list of houses.Houses displayed using Carousel.
+- User can see details of houses and they can add them to his favourites.
+- User can add and delete his favourites.
+- User can see his favourites in his dashboard.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## API
 
-### `yarn eject`
+- The backend API for this project created by me and can be found in [github](https://github.com/Murodjon000/Houses-api).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Built with
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- JavaScript
+- React
+- JSX
+- SCSS
+- Node
+- Redux
+- API
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Getting Started
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Clone the repo `git@github.com:Murodjon000/Pets.git`
+- cd `into` the project
+- Run `git pull origin app`
+- Run `yarn install` or `npm install` to install dependencies
+- On the terminal run `npm run start` open up the live server
+- To run tests write `npm run test` on the terminal
 
-## Learn More
+## Author
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+👤 **Murodjon Tursunpulatov**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Github: [@murodjon000](https://github.com/murodjon000)
+- Twitter: [@MurodjonTursun5](https://twitter.com/MurodjonTursun5)
+- Linkedin: [@Murodjon Tursunpulatov](https://www.linkedin.com/in/murodjon-tursunpulatov-5189481b3/)
 
-### Code Splitting
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Contributions, issues and feature requests are welcome!
 
-### Analyzing the Bundle Size
+Feel free to check the [issues page](issues/).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Show your support
 
-### Making a Progressive Web App
+Give a ⭐️ if you like this project!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 👏 Acknowledgements
 
-### Advanced Configuration
+- [Microverse](issues/)
+- All the images of houses used in this app are taken from [unsplash](https://unsplash.com/) and belong to the respective owners.
+- [Alexey Savitskiy](https://www.behance.net/alexey_savitskiy)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📝 License
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT License

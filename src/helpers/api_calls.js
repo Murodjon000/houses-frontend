@@ -12,6 +12,7 @@ const UNFAVOURITE = 'unfavourite';
 
 const authCalls = (authType, user) => {
   let API_END;
+
   if (authType === 'signup') {
     API_END = SIGN_UP;
   } else {
@@ -29,12 +30,12 @@ const authCalls = (authType, user) => {
     .then((response) => {
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
-        const decode = jwtDecode(localStorage.getItem('token'));
-        const userId = decode.sub;
-        navigate(`/user/${userId}`);
+        setTimeout(() => {
+          navigate('/dashboard');
+        }, 1000);
       }
     })
-    .catch((error) => console.log(error));
+    .catch((error) => error);
 };
 
 const addFavourites = (authType, id) => {
@@ -44,22 +45,18 @@ const addFavourites = (authType, id) => {
   } else {
     API_END = UNFAVOURITE;
   }
-  axios
-    .post(
-      `${API_BASE}${HOUSES}/${id}/${API_END}`,
-      {
-        house_id: id,
-      },
-      { headers: { Authorization: `token ${localStorage.getItem('token')}` } },
-      { withCredentials: true } // eslint-disable-line
-    )
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => console.log(error));
+  const result = axios.post(
+    `${API_BASE}${HOUSES}/${id}/${API_END}`,
+    {
+      house_id: id,
+    },
+    { headers: { Authorization: `token ${localStorage.getItem('token')}` } },
+    { withCredentials: true } // eslint-disable-line
+  );
+  return result;
 };
 
-const getUser = async (success) => {
+const getUser = async (success, failure = {}) => {
   let userId;
   if (localStorage.getItem('token')) {
     const decode = jwtDecode(localStorage.getItem('token'));
@@ -73,11 +70,11 @@ const getUser = async (success) => {
     );
     success(houses.data);
   } catch (error) {
-    console.log(error);
+    failure(error);
   }
 };
 
-const apiGetCalls = async (success, id = '') => {
+const apiGetCalls = async (success, id = '', failure = {}) => {
   try {
     const houses = await axios.get(
       `${API_BASE}${HOUSES}/${id}`,
@@ -86,7 +83,7 @@ const apiGetCalls = async (success, id = '') => {
     );
     success(houses.data.data);
   } catch (error) {
-    console.log(error);
+    failure(error);
   }
 };
 

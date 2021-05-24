@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { navigate } from '@reach/router';
-import { Carousel } from 'react-bootstrap';
+import { Carousel, Spinner } from 'react-bootstrap';
 import { apiGetCalls } from '../helpers/api_calls';
 import HouseCard from './HouseCard';
 import { addHouses } from '../actions';
+import Header from './DashboardHeader';
 
+// eslint-disable-next-line
 const Houses = ({ houses = [], getHouses }) => {
   if (!localStorage.getItem('token')) {
     navigate('/');
@@ -14,28 +16,38 @@ const Houses = ({ houses = [], getHouses }) => {
 
   useEffect(() => {
     apiGetCalls(getHouses);
-    console.log(houses);
   }, []);
 
   if (houses.length === 0) {
-    return <h1>Loading ....</h1>;
+    return (
+      <div className="d-flex justify-content-center align-items-center spinner__wrapper">
+        <Spinner animation="border" variant="primary" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>
+    );
   }
 
   return (
-    <div className="p-2">
-      <Carousel className="mb-3">
-        {houses.map((house) => (
-          <Carousel.Item key={house.id}>
-            <HouseCard
-              key={house.id}
-              name={house.attributes.name}
-              image={house.attributes.image}
-              price={house.attributes.price}
-              id={house.id}
-            />
-          </Carousel.Item>
-        ))}
-      </Carousel>
+    <div>
+      <Header />
+      <div className="houses__wrapper">
+        <div className="p-2 my-3">
+          <Carousel className="mb-3">
+            {houses.map((house) => (
+              <Carousel.Item key={house.id}>
+                <HouseCard
+                  key={house.id}
+                  name={house.attributes.name}
+                  image={house.attributes.image}
+                  price={house.attributes.price}
+                  id={house.id}
+                />
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        </div>
+      </div>
     </div>
   );
 };

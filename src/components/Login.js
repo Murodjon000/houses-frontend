@@ -32,9 +32,10 @@ const Login = ({ loginSuccess }) => {
   return (
     <div className="signup__wrapper  d-flex flex-column justify-content-center align-items-center">
       <h1 className="text-font-md mb-2">Log in</h1>
-      <p className="w-25 text-center">
+      <p className=" text-center">
         Hi there! Log in and start looking houses from anywhere
       </p>
+      <div id="auth-error" />
       <form className="d-flex flex-column my-3" onSubmit={handleUserSubmit}>
         <input
           type="email"

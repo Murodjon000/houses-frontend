@@ -46,40 +46,43 @@ const SignUp = ({ addUser }) => {
   return (
     <div className="signup__wrapper  d-flex flex-column justify-content-center align-items-center">
       <h1 className="text-font-md mb-2">Sign up</h1>
-      <p className="w-25 text-center">
+      <p className="text-center">
         Hi there! Sign up and start looking houses from anywhere
       </p>
-      <form className="d-flex flex-column my-3" onSubmit={handleUserSubmit}>
-        <input
-          type="text"
-          placeholder="Enter your username"
-          className="main-input "
-          onChange={onUsernameChange}
-        />
-        <input
-          type="email"
-          className="main-input my-3"
-          placeholder="Enter your email"
-          onChange={onEmailChange}
-        />
-        <input
-          type="password"
-          className="main-input "
-          placeholder="Enter your password"
-          onChange={onPasswordChange}
-        />
-        <input
-          type="password"
-          className="main-input my-3"
-          placeholder="Confirm your password"
-          onChange={onPasswordConfChange}
-        />
-        <input
-          type="submit"
-          className="main-btn primary-shadow"
-          value="Sign up"
-        />
-      </form>
+      <div className="signup__wrapper-form">
+        <form className="d-flex flex-column my-3" onSubmit={handleUserSubmit}>
+          <input
+            type="text"
+            placeholder="Enter your username"
+            className="main-input"
+            onChange={onUsernameChange}
+          />
+          <input
+            type="email"
+            className="main-input my-3"
+            placeholder="Enter your email"
+            onChange={onEmailChange}
+          />
+          <input
+            type="password"
+            className="main-input "
+            placeholder="Enter your password"
+            onChange={onPasswordChange}
+          />
+          <input
+            type="password"
+            className="main-input my-3"
+            placeholder="Confirm your password"
+            onChange={onPasswordConfChange}
+          />
+          <input
+            type="submit"
+            className="main-btn primary-shadow"
+            value="Sign up"
+          />
+        </form>
+      </div>
+
       <p>Have an account?</p>
       <Link to="/login" className="text-decoration-none text-hover">
         Login

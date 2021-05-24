@@ -1,25 +1,54 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { navigate } from '@reach/router';
+import { Spinner } from 'react-bootstrap';
 import { addHouseDetails } from '../actions';
 import { addFavourites, apiGetCalls } from '../helpers/api_calls';
 import formatToCurrency from '../helpers/currency_format';
+import Header from './DashboardHeader';
 
+// eslint-disable-next-line
 const HouseDetail = ({ id, house = [], getHouse }) => {
   useEffect(() => {
     apiGetCalls(getHouse, id);
   }, []);
 
   if (house.length === 0) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="d-flex justify-content-center align-items-center spinner__wrapper">
+        <Spinner animation="border" variant="primary" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>
+    );
+  }
+
+  if (!localStorage.getItem('token')) {
+    navigate('/');
   }
 
   const handleSubmit = () => {
-    addFavourites('favourite', id);
+    const messWrapper = document.getElementById('success-wrapper');
+    addFavourites('favourite', id)
+      .then((response) => {
+        if (response.status === 200) {
+          const message = document.createElement('div');
+          message.innerText = 'House successfuly added to favourites';
+          message.classList.add('alert__wrapper');
+          messWrapper.appendChild(message);
+          setTimeout(() => {
+            message.parentElement.remove();
+          }, 5000);
+        }
+      })
+      .catch((error) => error);
   };
 
   return (
     <div>
+      <Header />
+      <div id="success-wrapper" />
       <div className="shadow rounded my-3 d-flex flex-column infoCarousel__wrapper-desc-info mx-auto ">
         <div className="position-relative">
           <img
@@ -64,7 +93,7 @@ const HouseDetail = ({ id, house = [], getHouse }) => {
 HouseDetail.propTypes = {
   id: PropTypes.string, // eslint-disable-line
   getHouse: PropTypes.func.isRequired,
-  house: PropTypes.any, // eslint-disable-line
+  house: PropTypes.object, // eslint-disable-line
 };
 
 const mapStateToProps = (state) => ({
