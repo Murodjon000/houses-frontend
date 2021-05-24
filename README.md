@@ -17,7 +17,7 @@
 
 ## Live Demo
 
-- [Live](https://pets-finder.netlify.app/)
+- [Live](https://find-your-house-react.netlify.app/)
 
 ## Main Features
 
