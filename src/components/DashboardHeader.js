@@ -34,8 +34,7 @@ const Header = ({ user, getUserData }) => {
 };
 
 Header.propTypes = {
-  user: PropTypes.any, //eslint-disable-line
-
+  user: PropTypes.object, // eslint-disable-line
   getUserData: PropTypes.func.isRequired,
 };
 
