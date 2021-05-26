@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { navigate } from '@reach/router';
 import { Spinner } from 'react-bootstrap';
-import { addHouseDetails } from '../actions';
+import { addHouseDetails, getHousesDetailsErrors } from '../actions';
 import { addFavourites, apiGetCalls } from '../helpers/api_calls';
 import formatToCurrency from '../helpers/currency_format';
 import Header from './DashboardHeader';
 
 // eslint-disable-next-line
-const HouseDetail = ({ id, house = [], getHouse }) => {
+const HouseDetail = ({ id, house = [], getHouse, getHouseError, errors }) => {
   useEffect(() => {
-    apiGetCalls(getHouse, id);
+    apiGetCalls(getHouse, id, getHouseError);
   }, []);
 
   if (house.length === 0) {
@@ -22,6 +22,10 @@ const HouseDetail = ({ id, house = [], getHouse }) => {
         </Spinner>
       </div>
     );
+  }
+
+  if (errors) {
+    return <h1>House not found</h1>;
   }
 
   if (!localStorage.getItem('token')) {
@@ -93,15 +97,19 @@ const HouseDetail = ({ id, house = [], getHouse }) => {
 HouseDetail.propTypes = {
   id: PropTypes.string, // eslint-disable-line
   getHouse: PropTypes.func.isRequired,
+  getHouseError: PropTypes.func.isRequired,
   house: PropTypes.object, // eslint-disable-line
+  errors: PropTypes.object, // eslint-disable-line
 };
 
 const mapStateToProps = (state) => ({
   house: state.houses.house,
+  errors: state.houses.houseError,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getHouse: (house) => dispatch(addHouseDetails(house)),
+  getHouseError: (error) => dispatch(getHousesDetailsErrors(error)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HouseDetail);
