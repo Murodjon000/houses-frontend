@@ -16,8 +16,7 @@ const Login = ({ loginSuccess, authError, errors }) => {
       email,
       password,
     };
-    authCalls('login', user, authError);
-    loginSuccess(user);
+    authCalls('login', user, loginSuccess, authError);
   };
 
   const onEmailChange = (e) => {
@@ -31,13 +30,13 @@ const Login = ({ loginSuccess, authError, errors }) => {
   };
 
   return (
-    <div className="signup__wrapper  row">
-      <div className="col-md-6 mx-auto">
+    <div className="signup__wrapper  d-flex flex-column flex-wrap">
+      <div className="d-flex flex-column justify-content-center align-items-center">
         <h1 className=" text-center text-font-md mb-2">Log in</h1>
         <p className=" text-center mb-2">
           Hi there! Log in and start looking houses from anywhere
         </p>
-        <div className="errors">
+        <div className="errors w-100">
           {errors ? (
             <div>
               <Alert key="7" variant="danger">
@@ -48,7 +47,10 @@ const Login = ({ loginSuccess, authError, errors }) => {
             ''
           )}
         </div>
-        <form className="d-flex flex-column my-3" onSubmit={handleUserSubmit}>
+        <form
+          className="d-flex flex-column my-3 w-100"
+          onSubmit={handleUserSubmit}
+        >
           <input
             type="email"
             className="main-input my-3"
@@ -79,12 +81,12 @@ const Login = ({ loginSuccess, authError, errors }) => {
 
 Login.propTypes = {
   loginSuccess: PropTypes.func.isRequired,
-  errors: PropTypes.any, // eslint-disable-line
+  errors: PropTypes.object, // eslint-disable-line
   authError: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  errors: state.user.errors,
+  errors: state.user.loginErrors,
 });
 
 const mapDispatchToProps = (dispatch) => ({
