@@ -5,18 +5,22 @@ import { navigate } from '@reach/router';
 import { Carousel, Spinner } from 'react-bootstrap';
 import { apiGetCalls } from '../helpers/api_calls';
 import HouseCard from './HouseCard';
-import { addHouses } from '../actions';
+import { addHouses, getHousesErrors } from '../actions';
 import Header from './DashboardHeader';
 
 // eslint-disable-next-line
-const Houses = ({ houses = [], getHouses }) => {
+const Houses = ({ houses = [], getHouses, getHousesError, errors }) => {
   if (!localStorage.getItem('token')) {
     navigate('/');
   }
 
   useEffect(() => {
-    apiGetCalls(getHouses);
+    apiGetCalls(getHouses, '', getHousesError);
   }, []);
+
+  if (errors) {
+    return <h1>Houses not found</h1>;
+  }
 
   if (houses.length === 0) {
     return (
@@ -54,15 +58,19 @@ const Houses = ({ houses = [], getHouses }) => {
 
 Houses.propTypes = {
   getHouses: PropTypes.func.isRequired,
-  houses: PropTypes.any, // eslint-disable-line
+  getHousesError: PropTypes.func.isRequired,
+  houses: PropTypes.array, // eslint-disable-line
+  errors: PropTypes.array, // eslint-disable-line
 };
 
 const mapStateToProps = (state) => ({
   houses: state.houses.houses,
+  errors: state.houses.errors,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getHouses: (houses) => dispatch(addHouses(houses)),
+  getHousesError: (errors) => dispatch(getHousesErrors(errors)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Houses);
