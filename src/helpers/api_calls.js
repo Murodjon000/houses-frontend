@@ -10,7 +10,7 @@ const USERS = 'users';
 const FAVOURITE = 'favourite';
 const UNFAVOURITE = 'unfavourite';
 
-const authCalls = (authType, user) => {
+const authCalls = (authType, user, success, failure) => {
   let API_END;
 
   if (authType === 'signup') {
@@ -24,18 +24,18 @@ const authCalls = (authType, user) => {
       `${API_BASE}${API_END}`,
       {
         user,
-      },
-      { withCredentials: true } // eslint-disable-line
+      } // eslint-disable-line
     )
     .then((response) => {
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
+        success(user);
         setTimeout(() => {
           navigate('/dashboard');
         }, 1000);
       }
     })
-    .catch((error) => error);
+    .catch((error) => failure(error.response));
 };
 
 const addFavourites = (authType, id) => {
@@ -56,7 +56,7 @@ const addFavourites = (authType, id) => {
   return result;
 };
 
-const getUser = async (success, failure = {}) => {
+const getUser = async (success, failure) => {
   let userId;
   if (localStorage.getItem('token')) {
     const decode = jwtDecode(localStorage.getItem('token'));
@@ -74,7 +74,7 @@ const getUser = async (success, failure = {}) => {
   }
 };
 
-const apiGetCalls = async (success, id = '', failure = {}) => {
+const apiGetCalls = async (success, id = '', failure) => {
   try {
     const houses = await axios.get(
       `${API_BASE}${HOUSES}/${id}`,
