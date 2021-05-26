@@ -27,8 +27,8 @@ const Main = () => {
           <p className="text-sm mb-3">
             ever you are, feel yourself like at your own home.
           </p>
-          <div>
-            <Link to="/signup" className="main-btn mt-2">
+          <div className="my-4">
+            <Link to="/signup" className="main-btn ">
               START FREE
             </Link>
           </div>

@@ -136,6 +136,7 @@
     & > div {
       float: right;
       margin-top: 15px;
+      flex-direction: column;
 
       & > a {
         margin-bottom: 10px;

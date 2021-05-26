@@ -7,12 +7,13 @@
     ),
     url('../../assets/palm.jpg');
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
   padding: 0 40px;
 
-  & > p {
-    width: 230px;
-    text-align: center;
+  & > div {
+    max-width: 450px;
+    margin: 0 auto;
+    min-height: 100vh;
   }
 }
 /* stylelint-enable */
@@ -22,7 +23,7 @@
   border: 1px solid $gray-300;
   border-radius: 30px;
   outline: none;
-  width: 300px;
+  width: 100%;
 }
 
 .search-input {
