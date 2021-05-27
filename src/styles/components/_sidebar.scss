@@ -1,0 +1,61 @@
+.bm-burger-button {
+  position: absolute;
+  width: 36px;
+  height: 30px;
+  left: 20px;
+  top: 26px;
+}
+
+.sidebar-wrapper {
+  position: relative;
+}
+
+.bm-burger-bars {
+  background: $gray-600;
+}
+
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+.bm-cross {
+  background: #bdc3c7;
+}
+
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+.bm-menu {
+  background: #f7f5fa;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+.bm-item {
+  display: inline-block;
+  color: $gray-1000;
+  margin-bottom: 10px;
+  text-align: left;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-link {
+  height: 200px !important;
+}

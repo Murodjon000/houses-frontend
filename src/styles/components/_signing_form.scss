@@ -1,0 +1,86 @@
+/* stylelint-disable */
+.signup__wrapper {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(245, 246, 252, 0.877),
+      rgba(240, 237, 239, 0.781)
+    ),
+    url('../../assets/palm.jpg');
+  background-size: cover;
+  min-height: 100vh;
+  padding: 0 40px;
+
+  & > div {
+    max-width: 450px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+}
+/* stylelint-enable */
+
+.main-input {
+  padding: 10px 20px;
+  border: 1px solid $gray-300;
+  border-radius: 30px;
+  outline: none;
+  width: 100%;
+}
+
+.search-input {
+  padding: 10px 20px;
+  border: 1px solid $gray-300;
+  border-radius: 30px;
+  outline: none;
+  width: 270px;
+}
+
+.carousel-indicators {
+  margin-top: 50px;
+
+  & > li {
+    background-color: $primary;
+  }
+}
+
+.border-card {
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.carousel-inner {
+  padding-bottom: 50px;
+}
+
+.details-btn {
+  background-color: $primary;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
+  outline: none;
+  transition: all 0.3s linear;
+
+  &:hover {
+    color: $primary-light;
+    color: white;
+    box-shadow: rgba(236, 82, 0, 0.2) 0 8px 29px 0;
+  }
+}
+
+.user__info {
+  min-height: 100vh;
+  background-color: #f6fafb;
+}
+
+.user__header {
+  z-index: 1000;
+  box-shadow: rgba(33, 35, 38, 0.1) 0 10px 10px -10px;
+}
+
+.favourites__card {
+  max-width: 400px;
+
+  &-btn {
+    right: 0;
+    bottom: 0;
+  }
+}

@@ -1,0 +1,146 @@
+.main__wrapper {
+  background-image: url('../../assets/palm.jpg');
+  background-size: cover;
+  height: 40rem;
+  padding: 0 40px;
+
+  &-box {
+    margin-top: 130px;
+  }
+}
+/* stylelint-disable */
+.bottom__wrapper {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
+    url('../../assets/palm.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+
+  & > h1 {
+    font-size: 24px;
+  }
+}
+/* stylelint-enable */
+
+.footer__icons {
+  & > svg {
+    &:hover {
+      color: $primary;
+      transition: all 0.3s linear;
+    }
+  }
+}
+
+.main-btn {
+  padding: 15px 45px;
+  color: white;
+  font-weight: 600;
+  border-radius: 30px;
+  background-color: $primary;
+
+  &:hover {
+    background-color: $primary-light;
+    transition: all 0.3s linear;
+  }
+}
+
+.header-btn {
+  padding: 10px 20px;
+  color: white;
+  background-color: $gray-800;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  outline: none;
+
+  &:hover {
+    color: white !important;
+  }
+}
+
+.bg-blue-prime {
+  background-color: $blue-prime;
+}
+
+.info__wrapper {
+  padding: 20px 40px;
+
+  @media screen and (max-width: 768px) {
+    &-image {
+      & > img {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+
+    &-info {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  &-image {
+    &-first {
+      height: 500px;
+    }
+  }
+
+  &-info {
+    max-width: 400px;
+  }
+}
+
+.card-rounded-image {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+
+.infoCarousel__wrapper {
+  &-desc-info {
+    max-width: 600px;
+  }
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: $primary !important;
+}
+
+.sticy__navbar {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 40px;
+  padding-right: 40px;
+  width: 100%;
+  z-index: 100;
+  box-shadow: rgba(33, 35, 38, 0.1) 0 10px 10px -10px;
+  background-color: white;
+}
+
+.navbar__right {
+  justify-content: flex-end;
+
+  & > div {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 576px) {
+    & > div {
+      float: right;
+      margin-top: 15px;
+      flex-direction: column;
+
+      & > a {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
