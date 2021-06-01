@@ -6,6 +6,7 @@ import Login from './Login';
 import Houses from './Houses';
 import HouseDetail from './HouseDetail';
 import Dashboard from './Dashboard';
+import CreateHouse from './CreateHouse';
 
 const App = () => (
   <div id="outer-container">
@@ -13,6 +14,7 @@ const App = () => (
       <Main path="/" />
       <Dashboard path="/dashboard" />
       <Houses path="/houses" />
+      <CreateHouse path="/create-house" />
       <HouseDetail path="/houses/:id" />
       <Login path="/login" />
       <SignUp path="/signup" />
