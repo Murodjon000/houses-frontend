@@ -19,16 +19,6 @@ const Login = ({ loginSuccess, authError, errors }) => {
     authCalls('login', user, loginSuccess, authError);
   };
 
-  const onEmailChange = (e) => {
-    const { value } = e.target;
-    setEmail(value);
-  };
-
-  const onPasswordChange = (e) => {
-    const { value } = e.target;
-    setPassword(value);
-  };
-
   return (
     <div className="signup__wrapper  d-flex flex-column flex-wrap">
       <div className="d-flex flex-column justify-content-center align-items-center">
@@ -55,13 +45,13 @@ const Login = ({ loginSuccess, authError, errors }) => {
             type="email"
             className="main-input my-3"
             placeholder="Enter your email"
-            onChange={onEmailChange}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
             className="main-input "
             placeholder="Enter your password"
-            onChange={onPasswordChange}
+            onChange={(e) => setPassword(e.target.value)}
           />
 
           <input
