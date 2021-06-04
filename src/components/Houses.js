@@ -43,7 +43,7 @@ const Houses = ({ houses = [], getHouses, getHousesError, errors }) => {
                 <HouseCard
                   key={house.id}
                   name={house.attributes.name}
-                  image={house.attributes.image}
+                  image={house.attributes.images}
                   price={house.attributes.price}
                   id={house.id}
                 />
@@ -60,7 +60,7 @@ Houses.propTypes = {
   getHouses: PropTypes.func.isRequired,
   getHousesError: PropTypes.func.isRequired,
   houses: PropTypes.array, // eslint-disable-line
-  errors: PropTypes.array, // eslint-disable-line
+  errors: PropTypes.object, // eslint-disable-line
 };
 
 const mapStateToProps = (state) => ({
