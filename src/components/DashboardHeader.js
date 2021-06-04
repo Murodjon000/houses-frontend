@@ -20,6 +20,7 @@ const Header = ({ user, getUserData }) => {
           pageWrapId="page-wrap"
           outerContainerId="outer-container"
           name={user ? user.user.username : 'Loading...'}
+          image={user.avatar_url}
         />
       </div>
       <div id="page-wrap">
