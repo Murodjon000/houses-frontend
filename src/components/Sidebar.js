@@ -2,9 +2,9 @@ import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import { Link } from '@reach/router';
 import PropTypes from 'prop-types';
-import man from '../assets/man.jpg';
+import NavLink from '../helpers/NavLink';
 
-const Sidebar = ({ name }) => {
+const Sidebar = ({ name, image }) => {
   if (!name) {
     return <h1>Loading...</h1>;
   }
@@ -15,19 +15,22 @@ const Sidebar = ({ name }) => {
       <div className="d-flex flex-column mb-5">
         <div>
           <img
-            src={man}
+            src={image}
             alt=""
             className="d-block mx-auto card-rounded-image"
           />
-          <h2 className="my-2 text-center user-name">{name}</h2>
+          <h2 className="my-2 text-center menu-item">{name}</h2>
         </div>
         <div className="d-flex flex-column">
-          <Link to="/dashboard" className="menu-item text-hover my-3">
+          <NavLink to="/dashboard" className="menu-item text-hover my-3">
             Dashboard
-          </Link>
-          <Link to="/houses" className="menu-item text-hover">
+          </NavLink>
+          <NavLink to="/houses" className="menu-item text-hover">
             Houses
-          </Link>
+          </NavLink>
+          <NavLink to="/create-house" className="menu-item text-hover my-3">
+            Create House
+          </NavLink>
         </div>
       </div>
       <div className="sidebar-link">
@@ -42,10 +45,12 @@ const Sidebar = ({ name }) => {
 
 Sidebar.propTypes = {
   name: PropTypes.string,
+  image: PropTypes.string,
 };
 
 Sidebar.defaultProps = {
   name: '',
+  image: '',
 };
 
 export default Sidebar;
