@@ -8,6 +8,8 @@ export const GET_HOUSE_DETAIL_ERRORS = 'GET_HOUSE_DETAIL_ERRORS';
 export const GET_USER = 'GET_USER';
 export const GET_USER_FAILURE = 'GET_USER_FAILURE';
 export const ADD_HOUSES_DETAILS = 'ADD_HOUSES_DETAILS';
+export const CREATE_NEW_HOUSE = 'CREATE_NEW_HOUSE';
+export const GET_NEW_HOUSE_ERRORS = 'GET_NEW_HOUSE_ERRORS';
 
 /* eslint-disable */
 
@@ -58,5 +60,15 @@ export const addHouseDetails = (house) => ({
 
 export const getHousesDetailsErrors = (errors) => ({
   type: GET_HOUSE_DETAIL_ERRORS,
+  payload: { errors },
+});
+
+export const createNewHouse = (house) => ({
+  type: CREATE_NEW_HOUSE,
+  payload: { house },
+});
+
+export const getNewHouseError = (errors) => ({
+  type: GET_NEW_HOUSE_ERRORS,
   payload: { errors },
 });
