@@ -3,10 +3,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { navigate } from '@reach/router';
 import { Spinner } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faMoneyBill,
+  faMapMarkerAlt,
+  faCalendarAlt,
+  faBed,
+} from '@fortawesome/free-solid-svg-icons';
 import { addHouseDetails, getHousesDetailsErrors } from '../actions';
 import { addFavourites, apiGetCalls } from '../helpers/api_calls';
 import formatToCurrency from '../helpers/currency_format';
 import Header from './DashboardHeader';
+import Flash from './Flash';
 
 // eslint-disable-next-line
 const HouseDetail = ({ id, house = [], getHouse, getHouseError, errors }) => {
@@ -33,62 +41,99 @@ const HouseDetail = ({ id, house = [], getHouse, getHouseError, errors }) => {
   }
 
   const handleSubmit = () => {
-    const messWrapper = document.getElementById('success-wrapper');
     addFavourites('favourite', id)
       .then((response) => {
         if (response.status === 200) {
-          const message = document.createElement('div');
-          message.innerText = 'House successfuly added to favourites';
-          message.classList.add('alert__wrapper');
-          messWrapper.appendChild(message);
-          setTimeout(() => {
-            message.parentElement.remove();
-          }, 5000);
+          window.flash('House successfuly added to favourites!');
         }
       })
-      .catch((error) => error);
+      .catch((error) => {
+        window.flash('House was added to favourites!', 'danger');
+        return error;
+      });
   };
 
   return (
     <div>
       <Header />
-      <div id="success-wrapper" />
-      <div className="shadow rounded my-3 d-flex flex-column infoCarousel__wrapper-desc-info mx-auto ">
-        <div className="position-relative">
-          <img
-            src={house.attributes.image}
-            className="w-100 border-card"
-            alt="..."
-          />
-          <div className=" d-flex w-100 justify-content-between align-items-center p-3 position-absolute details-card ">
-            <div>
-              <h3 className="text-center text-white font-weight-bold">
-                {house.attributes.name}
-              </h3>
-              <span className="fa fa-star checked" />
-              <span className="fa fa-star checked" />
-              <span className="fa fa-star checked" />
-              <span className="fa fa-star checked" />
-              <span className="fa fa-star text-sm-gray" />
+      <div className="min-vh-100 bg-main p-3">
+        {/* <div id="success-wrapper" /> */}
+        <Flash />
+        <div className="shadow no-gutters rounded bg-white mb-3 row infoCarousel__wrapper-desc-info-detail mx-auto">
+          <div className="col-md-6">
+            <img
+              src={house.attributes.images}
+              className="w-100 h-100 border-card"
+              alt="..."
+            />
+          </div>
+          <div className="col-md-6 p-3">
+            <div className="">
+              <h3 className="font-weight-bold mb-2">About the listing</h3>
+              <p>{house.attributes.description}</p>
             </div>
-            <div>
-              <p className="font-weight-bold text-white text-center">
-                {formatToCurrency(house.attributes.price)}
-              </p>
-              <p className="text-sm-gray text-white-50">per month</p>
+
+            <div className="my-2">
+              <div className="d-flex justify-content-between align-items-center mb-2">
+                <div className="d-flex align-items-center">
+                  <div>
+                    <FontAwesomeIcon
+                      className="details-icon"
+                      icon={faMapMarkerAlt}
+                    />
+                  </div>
+                  <div className="px-3">
+                    <p>Location</p>
+                    <p>{house.attributes.location}</p>
+                  </div>
+                </div>
+                <div className="d-flex align-items-center">
+                  <div>
+                    <FontAwesomeIcon
+                      className="details-icon"
+                      icon={faCalendarAlt}
+                    />
+                  </div>
+                  <div className="px-2">
+                    <p>Built date</p>
+                    <p>{house.attributes.date}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="d-flex justify-content-between align-items-center">
+                <div className="d-flex align-items-center">
+                  <div>
+                    <FontAwesomeIcon className="details-icon" icon={faBed} />
+                  </div>
+                  <div className="px-2">
+                    <p>Beds</p>
+                    <p>{house.attributes.rooms}</p>
+                  </div>
+                </div>
+                <div className="d-flex align-items-center">
+                  <div>
+                    <FontAwesomeIcon
+                      className="details-icon"
+                      icon={faMoneyBill}
+                    />
+                  </div>
+                  <div className="px-2">
+                    <p>Rent</p>
+                    <p>{formatToCurrency(house.attributes.price)}</p>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <button
+              className="details-btn"
+              type="button"
+              onClick={handleSubmit}
+            >
+              Add to favourites
+            </button>
           </div>
         </div>
-
-        <div className="d-flex flex-column w-100 align-items-center p-3">
-          <h3 className="font-weight-bold">About the listing</h3>
-          <p>{house.attributes.description}</p>
-          <i className="bi bi-calendar" />
-        </div>
-
-        <button className="details-btn" type="button" onClick={handleSubmit}>
-          Add to favourites
-        </button>
       </div>
     </div>
   );
