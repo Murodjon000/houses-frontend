@@ -1,9 +1,9 @@
+/*eslint-disable*/
 import axios from 'axios';
 import { navigate } from '@reach/router';
-import { API_BASE, PRESIGNED_URL, USERS } from './api_calls';
+import { API_BASE, HOUSES, PRESIGNED_URL, USERS } from './api_calls';
 import { fileChecksum } from './file_reader';
 
-/*eslint-disable*/
 const createPresignedUrl = async (currentFile, byte_size, checksum) => {
   const file = {
     filename: currentFile.name,
@@ -71,4 +71,57 @@ const createUserSign = async (userInfo, success, failure) => {
     .catch((error) => failure(error.response));
 };
 
-export default createUserSign;
+const apiGetHouse = async (houseInfo, success, failure) => {
+  const {
+    name,
+    location,
+    rooms,
+    date,
+    price,
+    description,
+    image,
+  } = houseInfo;
+
+  const checksum = await fileChecksum(image);
+  const presignedFileParams = await createPresignedUrl(
+    image,
+    image.size,
+    checksum
+  );
+
+  const s3PutOptions = {
+    method: 'PUT',
+    headers: presignedFileParams.direct_upload.headers,
+    body: image,
+  };
+
+  const awsRes = await fetch(
+    presignedFileParams.direct_upload.url,
+    s3PutOptions
+  );
+  if (awsRes.status !== 200) return awsRes;
+
+  const house = {
+    name,
+    location,
+    rooms,
+    date,
+    price,
+    description,
+    house_image: presignedFileParams.blob_signed_id,
+  };
+  axios
+    .post(
+      `${API_BASE}${HOUSES}`,
+      { house },
+      { headers: { Authorization: `token ${localStorage.getItem('token')}` } },
+      { withCredentials: true } // eslint-disable-line
+    )
+    .then((response) => {
+      success(response);
+      navigate('/houses');
+    })
+    .catch((error) => failure(error.response));
+};
+
+export { createUserSign, apiGetHouse };
