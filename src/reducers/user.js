@@ -13,7 +13,7 @@ const user = (state = {}, action) => {
     return { ...state, user: action.payload.user };
   }
   if (action.type === AUTH_SUCCESS) {
-    return { ...state, user: action.payload.user };
+    return { ...state, loggedinUser: action.payload.user };
   }
 
   if (action.type === AUTH_FAILURE) {

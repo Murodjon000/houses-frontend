@@ -10,6 +10,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './styles/App.scss';
 import App from './components/App';
 import reducer from './reducers';
+import 'font-awesome/css/font-awesome.min.css';
+import Bus from './helpers/Bus';
 
 const composeEnhancers = // eslint-disable-line
   typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -19,6 +21,9 @@ const composeEnhancers = // eslint-disable-line
 const enhancer = composeEnhancers(applyMiddleware(thunk));
 
 const store = createStore(reducer, enhancer);
+
+window.flash = (message, type = 'success') =>
+  Bus.emit('flash', { message, type }); // eslint-disable-line
 
 const RootApp = () => (
   <React.StrictMode>
