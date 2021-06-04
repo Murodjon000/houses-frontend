@@ -7,7 +7,7 @@ const FavouritesCard = ({ name, image, price, location, handleRemove }) => (
   <div className="col-md-4 my-2">
     <div className="shadow rounded favourites__card mx-auto ">
       <div className="position-relative">
-        <img src={image} className="w-100 border-card" alt="..." />
+        <img src={image} className="w-100 border-card image-h" alt="..." />
         <button
           onClick={handleRemove}
           type="button"
