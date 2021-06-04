@@ -19,7 +19,7 @@ const Sidebar = ({ name, image }) => {
             alt=""
             className="d-block mx-auto card-rounded-image"
           />
-          <h2 className="my-2 text-center menu-item">{name}</h2>
+          <h2 className="my-2 text-center user-name menu-item">{name}</h2>
         </div>
         <div className="d-flex flex-column">
           <NavLink to="/dashboard" className="menu-item text-hover my-3">

@@ -25,8 +25,8 @@ const shallowSetup = () => {
       image:
         'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80',
       location: 'Warsaw',
-      built_date: '2005-10-10',
-      number_of_rooms: 7,
+      date: '2005-10-10',
+      rooms: 7,
       created_at: '2021-05-20T10:56:39.126Z',
       updated_at: '2021-05-20T10:56:39.126Z',
     },
