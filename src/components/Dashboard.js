@@ -7,6 +7,7 @@ import { getCurrentUser, getUserFailure } from '../actions';
 import Header from './DashboardHeader';
 import { addFavourites, getUser } from '../helpers/api_calls';
 import FavouritesCard from './FavouritesCard';
+import Flash from './Flash';
 
 // eslint-disable-next-line
 const Dashboard = ({ user, getUserData, errors, getUserError }) => {
@@ -33,20 +34,16 @@ const Dashboard = ({ user, getUserData, errors, getUserError }) => {
   }
 
   const handleRemove = (id) => {
-    const messWrapper = document.getElementById('remove-wrapper');
     addFavourites('unfavourite', id)
       .then((response) => {
         if (response.status === 200) {
-          const message = document.createElement('div');
-          message.innerText = 'House successfuly removed from favourites';
-          message.classList.add('alert__wrapper');
-          messWrapper.appendChild(message);
-          setTimeout(() => {
-            message.parentElement.remove();
-          }, 3000);
+          window.flash('House successfuly removed from favourites!');
         }
       })
-      .catch((error) => error);
+      .catch((error) => {
+        window.flash('Something went wrong.Plese try again!', 'danger');
+        return error;
+      });
   };
 
   return (
@@ -54,7 +51,7 @@ const Dashboard = ({ user, getUserData, errors, getUserError }) => {
       <Header />
       <div className="user__info p-3">
         <div className="bg-white rounded p-3 mt-4">
-          <div id="remove-wrapper" />
+          <Flash />
           <h1 className=" text-lg-black my-2">Favourites</h1>
           {user.favourites.length !== 0 ? (
             <div className="row">
