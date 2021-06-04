@@ -2,11 +2,12 @@ import axios from 'axios';
 import { navigate } from '@reach/router';
 import jwtDecode from 'jwt-decode';
 
-const API_BASE = 'https://houses-api-backend.herokuapp.com/api/v1/';
-const SIGN_UP = 'users';
+export const API_BASE = 'http://127.0.0.1:3000/api/v1/';
+export const SIGN_UP = 'users';
+export const PRESIGNED_URL = 'presigned_url';
+export const USERS = 'users';
+export const HOUSES = 'houses';
 const LOG_IN = 'auth';
-const HOUSES = 'houses';
-const USERS = 'users';
 const FAVOURITE = 'favourite';
 const UNFAVOURITE = 'unfavourite';
 
@@ -55,7 +56,7 @@ const addFavourites = (authType, id) => {
   );
   return result;
 };
-
+// eslint-disable-next-line
 const getUser = async (success, failure) => {
   let userId;
   if (localStorage.getItem('token')) {
@@ -70,7 +71,7 @@ const getUser = async (success, failure) => {
     );
     success(houses.data);
   } catch (error) {
-    failure(error);
+    failure(error.response);
   }
 };
 
