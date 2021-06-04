@@ -8,20 +8,45 @@
   height: 100vh;
 }
 
-.alert__wrapper {
-  max-width: 600px;
-  margin: 10px auto;
-  background-color: #d4edda;
-  padding: 10px;
-  border-radius: 6px;
-  font-size: 20px;
-  color: black;
+.bg-main {
+  background-color: #f6fafb;
+}
 
-  &-auth {
-    max-width: 600px;
-    margin: 10px auto;
-    padding: 10px;
-    border-radius: 6px;
-    font-size: 20px;
+.house__creator__wrapper {
+  background-color: #f6fafb;
+  min-height: 100vh;
+  padding: 10px;
+  &-form {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+    &-input {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid $gray-300;
+      width: 100%;
+
+      &:focus {
+        border: 1px solid $primary;
+        outline-color: $primary;
+      }
+
+      &-file {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    }
   }
+}
+
+.details-icon {
+  font-size: 25px;
+  color: $gray-700;
 }

@@ -24,6 +24,11 @@
   border-radius: 30px;
   outline: none;
   width: 100%;
+
+  &:focus {
+    border: 1px solid $primary;
+    outline-color: $primary;
+  }
 }
 
 .search-input {
@@ -83,4 +88,8 @@
     right: 0;
     bottom: 0;
   }
+}
+
+.image-h {
+  height: 270px;
 }

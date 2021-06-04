@@ -99,6 +99,10 @@
 .infoCarousel__wrapper {
   &-desc-info {
     max-width: 600px;
+
+    &-detail {
+      max-width: 900px;
+    }
   }
 }
 
