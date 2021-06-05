@@ -2,7 +2,7 @@ import axios from 'axios';
 import { navigate } from '@reach/router';
 import jwtDecode from 'jwt-decode';
 
-export const API_BASE = 'http://127.0.0.1:3000/api/v1/';
+export const API_BASE = 'https://houses-api-backend.herokuapp.com/api/v1/';
 export const SIGN_UP = 'users';
 export const PRESIGNED_URL = 'presigned_url';
 export const USERS = 'users';
