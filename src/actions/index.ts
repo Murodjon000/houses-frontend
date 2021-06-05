@@ -11,8 +11,6 @@ export const ADD_HOUSES_DETAILS = 'ADD_HOUSES_DETAILS';
 export const CREATE_NEW_HOUSE = 'CREATE_NEW_HOUSE';
 export const GET_NEW_HOUSE_ERRORS = 'GET_NEW_HOUSE_ERRORS';
 
-/* eslint-disable */
-
 export const createUser = (user) => ({
   type: ADD_USER,
   payload: { user },

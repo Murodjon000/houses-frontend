@@ -4,9 +4,9 @@
   "private": true,
   "dependencies": {
     "@babel/core": "^7.14.3",
-    "@babel/eslint-parser": "^7.14.3",
     "@babel/preset-env": "^7.14.2",
     "@babel/preset-react": "^7.13.13",
+    "@babel/preset-typescript": "^7.13.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
@@ -14,8 +14,11 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.23",
+    "@types/reach__router": "^1.3.8",
+    "@types/react": "^17.0.9",
+    "@types/react-dom": "^17.0.6",
     "axios": "^0.21.1",
-    "babel-eslint": "^10.1.0",
     "bootstrap": "^4.6.0",
     "bootstrap-icons": "^1.5.0",
     "crypto-js": "^4.0.0",
@@ -25,7 +28,6 @@
     "jwt-decode": "^3.1.2",
     "node-sass": "^5.0.0",
     "popper.js": "^1.16.1",
-    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.0",
     "react-burger-menu": "^3.0.6",
@@ -34,6 +36,7 @@
     "react-scripts": "4.0.3",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
+    "typescript": "^4.3.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -41,7 +44,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "eslint": "eslint .",
+    "eslint": "tslint --project",
     "stylelint": "npx stylelint '**/*.scss'"
   },
   "eslintConfig": {
@@ -63,18 +66,18 @@
     ]
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
-    "eslint": "^7.26.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-plugin-import": "^2.23.2",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.23.2",
-    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint": "^7.28.0",
     "react-test-renderer": "^17.0.2",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-csstree-validator": "^1.9.0",
-    "stylelint-scss": "^3.19.0"
+    "stylelint-scss": "^3.19.0",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^5.0.0"
   }
 }
