@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 import {
   ADD_USER,
   AUTH_FAILURE,
@@ -8,7 +7,28 @@ import {
   SIGNUP_FAILURE,
 } from '../actions';
 
-const user = (state = {}, action) => {
+export type userAction = {
+  type:
+    | typeof ADD_USER
+    | typeof AUTH_SUCCESS
+    | typeof SIGNUP_FAILURE
+    | typeof AUTH_FAILURE
+    | typeof GET_USER
+    | typeof GET_USER_FAILURE;
+  payload: { user: object } & { errors: object };
+};
+
+export type userState = {
+  state:
+    | { user: object }
+    | { loggedinUser: object }
+    | { loginErrors: object }
+    | { signupErrors: object }
+    | { userData: object }
+    | { userError: object };
+};
+
+const user = (state: userState, action: userAction) => {
   if (action.type === ADD_USER) {
     return { ...state, user: action.payload.user };
   }

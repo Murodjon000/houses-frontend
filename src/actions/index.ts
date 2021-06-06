@@ -11,62 +11,62 @@ export const ADD_HOUSES_DETAILS = 'ADD_HOUSES_DETAILS';
 export const CREATE_NEW_HOUSE = 'CREATE_NEW_HOUSE';
 export const GET_NEW_HOUSE_ERRORS = 'GET_NEW_HOUSE_ERRORS';
 
-export const createUser = (user) => ({
+export const createUser = (user: object) => ({
   type: ADD_USER,
   payload: { user },
 });
 
-export const authSuccess = (user) => ({
+export const authSuccess = (user: object) => ({
   type: AUTH_SUCCESS,
   payload: { user },
 });
 
-export const getCurrentUser = (user) => ({
+export const getCurrentUser = (user: object) => ({
   type: GET_USER,
   payload: { user },
 });
 
-export const getUserFailure = (errors) => ({
+export const getUserFailure = (errors: object) => ({
   type: GET_USER_FAILURE,
   payload: { errors },
 });
 
-export const authFailure = (errors) => ({
+export const authFailure = (errors: object) => ({
   type: AUTH_FAILURE,
   payload: { errors },
 });
 
-export const signupFailure = (errors) => ({
+export const signupFailure = (errors: object) => ({
   type: SIGNUP_FAILURE,
   payload: { errors },
 });
 
-export const addHouses = (houses) => ({
+export const addHouses = (houses: object) => ({
   type: ADD_HOUSES,
   payload: { houses },
 });
 
-export const getHousesErrors = (errors) => ({
+export const getHousesErrors = (errors: object) => ({
   type: GET_HOUSE_ERRORS,
   payload: { errors },
 });
 
-export const addHouseDetails = (house) => ({
+export const addHouseDetails = (house: object) => ({
   type: ADD_HOUSES_DETAILS,
   payload: { house },
 });
 
-export const getHousesDetailsErrors = (errors) => ({
+export const getHousesDetailsErrors = (errors: object) => ({
   type: GET_HOUSE_DETAIL_ERRORS,
   payload: { errors },
 });
 
-export const createNewHouse = (house) => ({
+export const createNewHouse = (house: object) => ({
   type: CREATE_NEW_HOUSE,
   payload: { house },
 });
 
-export const getNewHouseError = (errors) => ({
+export const getNewHouseError = (errors: object) => ({
   type: GET_NEW_HOUSE_ERRORS,
   payload: { errors },
 });

@@ -3,9 +3,9 @@
     "target": "ES2018",
     "allowJs": true,
     "module": "esnext",
-    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
+    "noImplicitAny": false,
     "outDir": "dist",
     "declaration": true,
     "jsx": "react-jsx",
@@ -20,7 +20,8 @@
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "strict": true
   },
   "include": [
     "src"

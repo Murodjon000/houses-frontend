@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
 import { Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -7,8 +6,19 @@ import { connect } from 'react-redux';
 import { createUser, signupFailure } from '../actions';
 import { createUserSign } from '../helpers/upload_calls';
 import Flash from './Flash';
+import { userAction, userState } from '../reducers/user';
 
-const SignUp = ({ addUser, authError, errors }) => {
+declare global {
+  interface Window {
+    flash: any;
+  }
+}
+
+const SignUp: React.FunctionComponent<any> = ({
+  addUser,
+  authError,
+  errors,
+}) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -46,7 +56,7 @@ const SignUp = ({ addUser, authError, errors }) => {
               <Alert key="6" variant="danger">
                 {errors.data.message.map((item) => (
                   // eslint-disable-next-line react/jsx-key
-                  <li key={Date.now() * Math.random(2)}>{item}</li>
+                  <li key={Date.now() * Math.random()}>{item}</li>
                 ))}
               </Alert>
             </div>
@@ -109,19 +119,13 @@ const SignUp = ({ addUser, authError, errors }) => {
   );
 };
 
-SignUp.propTypes = {
-  addUser: PropTypes.func.isRequired,
-  errors: PropTypes.object, // eslint-disable-line
-  authError: PropTypes.func.isRequired,
-};
-
 const mapStateToProps = (state) => ({
   errors: state.user.signupErrors,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addUser: (user) => dispatch(createUser(user)),
-  authError: (error) => dispatch(signupFailure(error)),
+  addUser: (user: object) => dispatch(createUser(user)),
+  authError: (error: object) => dispatch(signupFailure(error)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

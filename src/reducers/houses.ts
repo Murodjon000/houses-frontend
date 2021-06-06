@@ -7,7 +7,22 @@ import {
   GET_NEW_HOUSE_ERRORS,
 } from '../actions';
 
-const housesRed = (state = {}, action) => {
+type houseAction = {
+  type:
+    | typeof ADD_HOUSES
+    | typeof ADD_HOUSES_DETAILS
+    | typeof CREATE_NEW_HOUSE
+    | typeof GET_HOUSE_DETAIL_ERRORS
+    | typeof GET_HOUSE_ERRORS
+    | typeof GET_NEW_HOUSE_ERRORS;
+  payload: { houses: object } & { errors: object } & { house: object };
+};
+
+type houseState = {
+  state: object;
+};
+
+const housesRed = (state: houseState, action: houseAction) => {
   if (action.type === ADD_HOUSES) {
     return { ...state, houses: action.payload.houses };
   }
