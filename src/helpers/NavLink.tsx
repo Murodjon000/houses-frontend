@@ -1,8 +1,7 @@
+import React from 'react';
 import { Link } from '@reach/router';
 
-/* eslint-disable */
-
-const NavLink = (props) => (
+const NavLink: React.FunctionComponent<any> = (props) => (
   <Link
     {...props}
     getProps={({ isCurrent }) => {

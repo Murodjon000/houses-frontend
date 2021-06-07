@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { navigate } from '@reach/router';
 import { Spinner } from 'react-bootstrap';
@@ -9,8 +8,12 @@ import { addFavourites, getUser } from '../helpers/api_calls';
 import FavouritesCard from './FavouritesCard';
 import Flash from './Flash';
 
-// eslint-disable-next-line
-const Dashboard = ({ user, getUserData, errors, getUserError }) => {
+const Dashboard: React.FunctionComponent<any> = ({
+  user,
+  getUserData,
+  errors,
+  getUserError,
+}) => {
   useEffect(() => {
     getUser(getUserData, getUserError);
   }, [user]);
@@ -33,15 +36,19 @@ const Dashboard = ({ user, getUserData, errors, getUserError }) => {
     return <h1>User not found.Please sign in or sign up!</h1>;
   }
 
-  const handleRemove = (id) => {
+  const handleRemove = (id: any) => {
     addFavourites('unfavourite', id)
       .then((response) => {
         if (response.status === 200) {
           window.flash('House successfuly removed from favourites!');
         }
+        return response;
       })
       .catch((error) => {
-        window.flash('Something went wrong.Plese try again!', 'danger');
+        window.flash(
+          'Something went wrong.Plese try again!',
+          'danger',
+        );
         return error;
       });
   };
@@ -55,7 +62,7 @@ const Dashboard = ({ user, getUserData, errors, getUserError }) => {
           <h1 className=" text-lg-black my-2">Favourites</h1>
           {user.favourites.length !== 0 ? (
             <div className="row">
-              {user.favourites.map((house) => (
+              {user.favourites.map((house: any) => (
                 <FavouritesCard
                   key={house.id}
                   name={house.name}
@@ -77,21 +84,17 @@ const Dashboard = ({ user, getUserData, errors, getUserError }) => {
   );
 };
 
-Dashboard.propTypes = {
-  user: PropTypes.object, //eslint-disable-line
-  errors: PropTypes.object, //eslint-disable-line
-  getUserData: PropTypes.func.isRequired,
-  getUserError: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: any) => ({
   user: state.user.userData,
   errors: state.user.userError,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getUserData: (user) => dispatch(getCurrentUser(user)),
-  getUserError: (errors) => dispatch(getUserFailure(errors)),
+const mapDispatchToProps = (dispatch: any) => ({
+  getUserData: (user: any) => dispatch(getCurrentUser(user)),
+  getUserError: (errors: any) => dispatch(getUserFailure(errors)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Dashboard);

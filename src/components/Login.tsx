@@ -2,15 +2,18 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Alert } from 'react-bootstrap';
 import { Link } from '@reach/router';
-import PropTypes from 'prop-types';
 import { authCalls } from '../helpers/api_calls';
 import { authFailure, authSuccess } from '../actions';
 
-const Login = ({ loginSuccess, authError, errors }) => {
+const Login: React.FunctionComponent<any> = ({
+  loginSuccess,
+  authError,
+  errors,
+}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleUserSubmit = (e) => {
+  const handleUserSubmit = (e: any) => {
     e.preventDefault();
     const user = {
       email,
@@ -61,7 +64,10 @@ const Login = ({ loginSuccess, authError, errors }) => {
           />
         </form>
         <p>Don`t have an account?</p>
-        <Link to="/signup" className="text-decoration-none text-hover">
+        <Link
+          to="/signup"
+          className="text-decoration-none text-hover"
+        >
           Sign up
         </Link>
       </div>
@@ -69,19 +75,13 @@ const Login = ({ loginSuccess, authError, errors }) => {
   );
 };
 
-Login.propTypes = {
-  loginSuccess: PropTypes.func.isRequired,
-  errors: PropTypes.object, // eslint-disable-line
-  authError: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: any) => ({
   errors: state.user.loginErrors,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  loginSuccess: (user) => dispatch(authSuccess(user)),
-  authError: (error) => dispatch(authFailure(error)),
+const mapDispatchToProps = (dispatch: any) => ({
+  loginSuccess: (user: any) => dispatch(authSuccess(user)),
+  authError: (error: any) => dispatch(authFailure(error)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

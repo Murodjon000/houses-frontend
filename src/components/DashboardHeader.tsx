@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import Sidebar from './Sidebar';
 import { getUser } from '../helpers/api_calls';
 import { getCurrentUser } from '../actions';
 
-const Header = ({ user, getUserData }) => {
+const Header: React.FunctionComponent<any> = ({
+  user,
+  getUserData,
+}) => {
   useEffect(() => {
     getUser(getUserData);
   }, []);
@@ -26,7 +28,11 @@ const Header = ({ user, getUserData }) => {
       <div id="page-wrap">
         <header className="user__header d-flex px-2 bg-white justify-content-end  py-3 align-items-center ">
           <div>
-            <input type="text" placeholder="Search" className=" search-input" />
+            <input
+              type="text"
+              placeholder="Search"
+              className=" search-input"
+            />
           </div>
         </header>
       </div>
@@ -34,17 +40,12 @@ const Header = ({ user, getUserData }) => {
   );
 };
 
-Header.propTypes = {
-  user: PropTypes.object, // eslint-disable-line
-  getUserData: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: any) => ({
   user: state.user.userData,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getUserData: (user) => dispatch(getCurrentUser(user)),
+const mapDispatchToProps = (dispatch: any) => ({
+  getUserData: (user: any) => dispatch(getCurrentUser(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

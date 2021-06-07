@@ -9,7 +9,7 @@
   },
   "extends": [
     "eslint:recommended",
-    "prettier",
+    // "prettier",
     "plugin:promise/recommended",
     "plugin:sonarjs/recommended"
   ],
@@ -21,7 +21,13 @@
     "ecmaVersion": 12,
     "project": "tsconfig.eslint.json"
   },
-  "plugins": ["react", "@typescript-eslint", "promise", "sonarjs", "prettier"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "promise",
+    "sonarjs"
+    // "prettier"
+  ],
   "rules": {
     "prefer-const": "error"
   },
@@ -42,8 +48,8 @@
       },
       "extends": [
         "eslint:recommended",
-        "plugin:react/recommended",
-        "prettier/react"
+        "plugin:react/recommended"
+        // "prettier/react"
       ]
     },
 
@@ -51,9 +57,9 @@
      * TYPESCRIPT CODE
      */
     {
-      "files": ["{src,tests}/**/*.{ts,tsx}"],
+      "files": ["{src}/**/*.{ts,tsx}"],
       "extends": [
-        "prettier/@typescript-eslint",
+        // "prettier/@typescript-eslint",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
       ],

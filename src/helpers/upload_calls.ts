@@ -4,7 +4,11 @@ import { navigate } from '@reach/router';
 import { API_BASE, HOUSES, PRESIGNED_URL, USERS } from './api_calls';
 import { fileChecksum } from './file_reader';
 
-const createPresignedUrl = async (currentFile, byte_size, checksum) => {
+const createPresignedUrl = async (
+  currentFile:any,
+  byte_size:any,
+  checksum:any,
+) => {
   const file = {
     filename: currentFile.name,
     byte_size,
@@ -22,14 +26,15 @@ const createPresignedUrl = async (currentFile, byte_size, checksum) => {
   return result;
 };
 
-const createUserSign = async (userInfo, success, failure) => {
-  const { username, email, password, password_confirmation, image } = userInfo;
+const createUserSign = async (userInfo:any, success:any, failure:any) => {
+  const { username, email, password, password_confirmation, image } =
+    userInfo;
 
   const checksum = await fileChecksum(image);
   const presignedFileParams = await createPresignedUrl(
     image,
     image.size,
-    checksum
+    checksum,
   );
 
   const s3PutOptions = {
@@ -40,7 +45,7 @@ const createUserSign = async (userInfo, success, failure) => {
 
   const awsRes = await fetch(
     presignedFileParams.direct_upload.url,
-    s3PutOptions
+    s3PutOptions,
   );
   if (awsRes.status !== 200) return awsRes;
 
@@ -57,7 +62,7 @@ const createUserSign = async (userInfo, success, failure) => {
       `${API_BASE}${USERS}`,
       {
         user,
-      } // eslint-disable-line
+      }, // eslint-disable-line
     )
     .then((response) => {
       if (response.data.token && response.data.avatar_url) {
@@ -71,22 +76,15 @@ const createUserSign = async (userInfo, success, failure) => {
     .catch((error) => failure(error.response));
 };
 
-const apiGetHouse = async (houseInfo, success, failure) => {
-  const {
-    name,
-    location,
-    rooms,
-    date,
-    price,
-    description,
-    image,
-  } = houseInfo;
+const apiGetHouse = async (houseInfo:any, success:any, failure:any) => {
+  const { name, location, rooms, date, price, description, image } =
+    houseInfo;
 
   const checksum = await fileChecksum(image);
   const presignedFileParams = await createPresignedUrl(
     image,
     image.size,
-    checksum
+    checksum,
   );
 
   const s3PutOptions = {
@@ -97,7 +95,7 @@ const apiGetHouse = async (houseInfo, success, failure) => {
 
   const awsRes = await fetch(
     presignedFileParams.direct_upload.url,
-    s3PutOptions
+    s3PutOptions,
   );
   if (awsRes.status !== 200) return awsRes;
 
@@ -114,8 +112,11 @@ const apiGetHouse = async (houseInfo, success, failure) => {
     .post(
       `${API_BASE}${HOUSES}`,
       { house },
-      { headers: { Authorization: `token ${localStorage.getItem('token')}` } },
-      { withCredentials: true } // eslint-disable-line
+      {
+        headers: {
+          Authorization: `token ${localStorage.getItem('token')}`,
+        },
+      },
     )
     .then((response) => {
       success(response);

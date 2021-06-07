@@ -11,62 +11,62 @@ export const ADD_HOUSES_DETAILS = 'ADD_HOUSES_DETAILS';
 export const CREATE_NEW_HOUSE = 'CREATE_NEW_HOUSE';
 export const GET_NEW_HOUSE_ERRORS = 'GET_NEW_HOUSE_ERRORS';
 
-export const createUser = (user: object) => ({
+export const createUser = (user: any) => ({
   type: ADD_USER,
   payload: { user },
 });
 
-export const authSuccess = (user: object) => ({
+export const authSuccess = (user: any) => ({
   type: AUTH_SUCCESS,
   payload: { user },
 });
 
-export const getCurrentUser = (user: object) => ({
+export const getCurrentUser = (user: any) => ({
   type: GET_USER,
   payload: { user },
 });
 
-export const getUserFailure = (errors: object) => ({
+export const getUserFailure = (errors: any) => ({
   type: GET_USER_FAILURE,
   payload: { errors },
 });
 
-export const authFailure = (errors: object) => ({
+export const authFailure = (errors: any) => ({
   type: AUTH_FAILURE,
   payload: { errors },
 });
 
-export const signupFailure = (errors: object) => ({
+export const signupFailure = (errors: any) => ({
   type: SIGNUP_FAILURE,
   payload: { errors },
 });
 
-export const addHouses = (houses: object) => ({
+export const addHouses = (houses: any) => ({
   type: ADD_HOUSES,
   payload: { houses },
 });
 
-export const getHousesErrors = (errors: object) => ({
+export const getHousesErrors = (errors: any) => ({
   type: GET_HOUSE_ERRORS,
   payload: { errors },
 });
 
-export const addHouseDetails = (house: object) => ({
+export const addHouseDetails = (house: any) => ({
   type: ADD_HOUSES_DETAILS,
   payload: { house },
 });
 
-export const getHousesDetailsErrors = (errors: object) => ({
+export const getHousesDetailsErrors = (errors: any) => ({
   type: GET_HOUSE_DETAIL_ERRORS,
   payload: { errors },
 });
 
-export const createNewHouse = (house: object) => ({
+export const createNewHouse = (house: any) => ({
   type: CREATE_NEW_HOUSE,
   payload: { house },
 });
 
-export const getNewHouseError = (errors: object) => ({
+export const getNewHouseError = (errors: any) => ({
   type: GET_NEW_HOUSE_ERRORS,
   payload: { errors },
 });

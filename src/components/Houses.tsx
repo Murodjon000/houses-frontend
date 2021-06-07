@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { navigate } from '@reach/router';
 import { Carousel, Spinner } from 'react-bootstrap';
 import { apiGetCalls } from '../helpers/api_calls';
@@ -8,8 +7,7 @@ import HouseCard from './HouseCard';
 import { addHouses, getHousesErrors } from '../actions';
 import Header from './DashboardHeader';
 
-// eslint-disable-next-line
-const Houses = ({ houses = [], getHouses, getHousesError, errors }) => {
+const Houses: React.FunctionComponent<any> = ({ houses = [], getHouses, getHousesError, errors }) => {
   if (!localStorage.getItem('token')) {
     navigate('/');
   }
@@ -38,7 +36,7 @@ const Houses = ({ houses = [], getHouses, getHousesError, errors }) => {
       <div className="houses__wrapper">
         <div className="p-2 my-3">
           <Carousel className="mb-3">
-            {houses.map((house) => (
+            {houses.map((house:any) => (
               <Carousel.Item key={house.id}>
                 <HouseCard
                   key={house.id}
@@ -56,21 +54,14 @@ const Houses = ({ houses = [], getHouses, getHousesError, errors }) => {
   );
 };
 
-Houses.propTypes = {
-  getHouses: PropTypes.func.isRequired,
-  getHousesError: PropTypes.func.isRequired,
-  houses: PropTypes.array, // eslint-disable-line
-  errors: PropTypes.object, // eslint-disable-line
-};
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state:any) => ({
   houses: state.houses.houses,
   errors: state.houses.errors,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getHouses: (houses) => dispatch(addHouses(houses)),
-  getHousesError: (errors) => dispatch(getHousesErrors(errors)),
+const mapDispatchToProps = (dispatch:any) => ({
+  getHouses: (houses:any) => dispatch(addHouses(houses)),
+  getHousesError: (errors:any) => dispatch(getHousesErrors(errors)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Houses);

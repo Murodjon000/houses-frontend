@@ -6,13 +6,6 @@ import { connect } from 'react-redux';
 import { createUser, signupFailure } from '../actions';
 import { createUserSign } from '../helpers/upload_calls';
 import Flash from './Flash';
-import { userAction, userState } from '../reducers/user';
-
-declare global {
-  interface Window {
-    flash: any;
-  }
-}
 
 const SignUp: React.FunctionComponent<any> = ({
   addUser,
@@ -22,10 +15,11 @@ const SignUp: React.FunctionComponent<any> = ({
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfiramtion] = useState('');
-  const [file, setFile] = useState('');
+  const [passwordConfirmation, setPasswordConfiramtion] =
+    useState('');
+  const [file, setFile] = useState<any>('');
 
-  const handleUserSubmit = (e) => {
+  const handleUserSubmit = (e: any) => {
     e.preventDefault();
 
     if (file !== '') {
@@ -42,6 +36,10 @@ const SignUp: React.FunctionComponent<any> = ({
     }
   };
 
+  const fileChange = (files: any) => {
+    setFile(files[0]);
+  };
+
   return (
     <div className="signup__wrapper   d-flex flex-column flex-wrap">
       <div className="d-flex flex-column justify-content-center align-items-center">
@@ -54,7 +52,7 @@ const SignUp: React.FunctionComponent<any> = ({
           {errors ? (
             <div>
               <Alert key="6" variant="danger">
-                {errors.data.message.map((item) => (
+                {errors.data.message.map((item: any) => (
                   // eslint-disable-next-line react/jsx-key
                   <li key={Date.now() * Math.random()}>{item}</li>
                 ))}
@@ -65,7 +63,10 @@ const SignUp: React.FunctionComponent<any> = ({
           )}
         </div>
         <div className="signup__wrapper-form w-100">
-          <form className="d-flex flex-column my-3" onSubmit={handleUserSubmit}>
+          <form
+            className="d-flex flex-column my-3"
+            onSubmit={handleUserSubmit}
+          >
             <input
               type="text"
               placeholder="Enter your username"
@@ -88,14 +89,16 @@ const SignUp: React.FunctionComponent<any> = ({
               type="password"
               className="main-input my-3"
               placeholder="Confirm your password"
-              onChange={(e) => setPasswordConfiramtion(e.target.value)}
+              onChange={(e) =>
+                setPasswordConfiramtion(e.target.value)
+              }
             />
             <label htmlFor="avatar">
               Upload Avatar
               <input
                 type="file"
                 className="w-100 my-3"
-                onChange={(e) => setFile(e.target.files[0])}
+                onChange={(e) => fileChange(e.target.files)}
                 id="avatar"
               />
             </label>
@@ -119,13 +122,13 @@ const SignUp: React.FunctionComponent<any> = ({
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: any) => ({
   errors: state.user.signupErrors,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  addUser: (user: object) => dispatch(createUser(user)),
-  authError: (error: object) => dispatch(signupFailure(error)),
+const mapDispatchToProps = (dispatch: any) => ({
+  addUser: (user: any) => dispatch(createUser(user)),
+  authError: (error: any) => dispatch(signupFailure(error)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

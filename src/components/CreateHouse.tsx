@@ -1,23 +1,26 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Alert } from 'react-bootstrap';
 import { apiGetHouse } from '../helpers/upload_calls';
 import { createNewHouse, getNewHouseError } from '../actions';
 import Header from './DashboardHeader';
 import Flash from './Flash';
+import HouseForm from './CreateHouseForm';
 
-// eslint-disable-next-line
-const CreateHouse = ({ getHouses, getHousesError, errors }) => {
+const CreateHouse: React.FunctionComponent<any> = ({
+  getHouses,
+  getHousesError,
+  errors,
+}) => {
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
   const [numberRooms, setNumberRooms] = useState('');
   const [builtDate, setBuiltDate] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
-  const [file, setFile] = useState('');
+  const [file, setFile] = useState<any>('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     if (file !== '') {
       const house = {
@@ -33,25 +36,34 @@ const CreateHouse = ({ getHouses, getHousesError, errors }) => {
     } else {
       window.flash(
         'Image should be selected!',
-        'warning' // eslint-disable-line
+        'warning', // eslint-disable-line
       );
     }
+  };
+
+  const changeFile = (files: any) => {
+    setFile(files[0]);
   };
 
   return (
     <div>
       <Header />
       <div className="house__creator__wrapper">
-        <form onSubmit={handleSubmit} className="house__creator__wrapper-form">
-          <h1 className="text-font-md mb-3 text-center">Create apartment</h1>
+        <form
+          onSubmit={handleSubmit}
+          className="house__creator__wrapper-form"
+        >
+          <h1 className="text-font-md mb-3 text-center">
+            Create apartment
+          </h1>
           <Flash />
           <div className="errors w-100">
             {errors ? (
               <div>
                 <Alert key="6" variant="danger">
-                  {errors.data.message.map((item) => (
+                  {errors.data.message.map((item: any) => (
                     // eslint-disable-next-line react/jsx-key
-                    <li key={Date.now() * Math.random(2)}>{item}</li>
+                    <li key={Date.now() * Math.random()}>{item}</li>
                   ))}
                 </Alert>
               </div>
@@ -64,8 +76,8 @@ const CreateHouse = ({ getHouses, getHousesError, errors }) => {
               <div className="col-md-6 mb-3">
                 <label htmlFor="house" className="w-100">
                   Name
-                  <input
-                    type="text "
+                  <HouseForm
+                    type="text"
                     className="house__creator__wrapper-form-input"
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Enter name of your house"
@@ -76,7 +88,7 @@ const CreateHouse = ({ getHouses, getHousesError, errors }) => {
               <div className="col-md-6 mb-3">
                 <label htmlFor="location" className="w-100">
                   Location
-                  <input
+                  <HouseForm
                     type="text"
                     className="house__creator__wrapper-form-input"
                     onChange={(e) => setLocation(e.target.value)}
@@ -91,7 +103,7 @@ const CreateHouse = ({ getHouses, getHousesError, errors }) => {
               <div className="col-md-6 mb-3">
                 <label htmlFor="rooms" className="w-100">
                   Rooms number
-                  <input
+                  <HouseForm
                     type="number"
                     className="house__creator__wrapper-form-input"
                     onChange={(e) => setNumberRooms(e.target.value)}
@@ -103,7 +115,7 @@ const CreateHouse = ({ getHouses, getHousesError, errors }) => {
               <div className="col-md-6 mb-3">
                 <label htmlFor="data" className="w-100">
                   Built Date
-                  <input
+                  <HouseForm
                     type="date"
                     className="house__creator__wrapper-form-input"
                     onChange={(e) => setBuiltDate(e.target.value)}
@@ -118,7 +130,7 @@ const CreateHouse = ({ getHouses, getHousesError, errors }) => {
               <div className="col-md-6 mb-3">
                 <label htmlFor="price" className="w-100">
                   Price
-                  <input
+                  <HouseForm
                     type="number"
                     className="house__creator__wrapper-form-input"
                     onChange={(e) => setPrice(e.target.value)}
@@ -130,11 +142,11 @@ const CreateHouse = ({ getHouses, getHousesError, errors }) => {
               <div className="col-md-6 mb-3">
                 <label htmlFor="file" className="w-100">
                   Select image
-                  <input
+                  <HouseForm
                     type="file"
                     className="house__creator__wrapper-form-input-file w-100"
-                    onChange={(e) => setFile(e.target.files[0])}
-                    placeholder="Enter price for per month"
+                    onChange={(e) => changeFile(e.target.files)}
+                    placeholder="Enter image"
                     id="file"
                   />
                 </label>
@@ -143,8 +155,8 @@ const CreateHouse = ({ getHouses, getHousesError, errors }) => {
 
             <label htmlFor="description" className="w-100">
               Description
-              <textarea
-                type="text"
+              <HouseForm
+                type="textarea"
                 className="house__creator__wrapper-form-input"
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Enter description of your house"
@@ -161,21 +173,18 @@ const CreateHouse = ({ getHouses, getHousesError, errors }) => {
     </div>
   );
 };
-CreateHouse.propTypes = {
-  getHouses: PropTypes.func.isRequired,
-  getHousesError: PropTypes.func.isRequired,
-  house: PropTypes.array, // eslint-disable-line
-  errors: PropTypes.object, // eslint-disable-line
-};
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: any) => ({
   house: state.houses.newHouse,
   errors: state.houses.newHouseError,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getHouses: (house) => dispatch(createNewHouse(house)),
-  getHousesError: (errors) => dispatch(getNewHouseError(errors)),
+const mapDispatchToProps = (dispatch: any) => ({
+  getHouses: (house: any) => dispatch(createNewHouse(house)),
+  getHousesError: (errors: any) => dispatch(getNewHouseError(errors)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateHouse);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(CreateHouse);

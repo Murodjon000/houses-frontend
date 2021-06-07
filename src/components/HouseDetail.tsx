@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { navigate } from '@reach/router';
 import { Spinner } from 'react-bootstrap';
@@ -16,8 +15,13 @@ import formatToCurrency from '../helpers/currency_format';
 import Header from './DashboardHeader';
 import Flash from './Flash';
 
-// eslint-disable-next-line
-const HouseDetail = ({ id, house = [], getHouse, getHouseError, errors }) => {
+const HouseDetail: React.FunctionComponent<any> = ({
+  id,
+  house = [],
+  getHouse,
+  getHouseError,
+  errors,
+}) => {
   useEffect(() => {
     apiGetCalls(getHouse, id, getHouseError);
   }, []);
@@ -46,6 +50,7 @@ const HouseDetail = ({ id, house = [], getHouse, getHouseError, errors }) => {
         if (response.status === 200) {
           window.flash('House successfuly added to favourites!');
         }
+        return response;
       })
       .catch((error) => {
         window.flash('House was added to favourites!', 'danger');
@@ -69,7 +74,9 @@ const HouseDetail = ({ id, house = [], getHouse, getHouseError, errors }) => {
           </div>
           <div className="col-md-6 p-3">
             <div className="">
-              <h3 className="font-weight-bold mb-2">About the listing</h3>
+              <h3 className="font-weight-bold mb-2">
+                About the listing
+              </h3>
               <p>{house.attributes.description}</p>
             </div>
 
@@ -103,7 +110,10 @@ const HouseDetail = ({ id, house = [], getHouse, getHouseError, errors }) => {
               <div className="d-flex justify-content-between align-items-center">
                 <div className="d-flex align-items-center">
                   <div>
-                    <FontAwesomeIcon className="details-icon" icon={faBed} />
+                    <FontAwesomeIcon
+                      className="details-icon"
+                      icon={faBed}
+                    />
                   </div>
                   <div className="px-2">
                     <p>Beds</p>
@@ -139,22 +149,18 @@ const HouseDetail = ({ id, house = [], getHouse, getHouseError, errors }) => {
   );
 };
 
-HouseDetail.propTypes = {
-  id: PropTypes.string, // eslint-disable-line
-  getHouse: PropTypes.func.isRequired,
-  getHouseError: PropTypes.func.isRequired,
-  house: PropTypes.object, // eslint-disable-line
-  errors: PropTypes.object, // eslint-disable-line
-};
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: any) => ({
   house: state.houses.house,
   errors: state.houses.houseError,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getHouse: (house) => dispatch(addHouseDetails(house)),
-  getHouseError: (error) => dispatch(getHousesDetailsErrors(error)),
+const mapDispatchToProps = (dispatch: any) => ({
+  getHouse: (house: any) => dispatch(addHouseDetails(house)),
+  getHouseError: (error: any) =>
+    dispatch(getHousesDetailsErrors(error)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HouseDetail);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(HouseDetail);

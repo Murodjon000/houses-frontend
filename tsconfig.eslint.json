@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "allowJs": true,
-    "types": ["jest"]
+    "types": ["jest", "react-scripts"]
   },
-  "include": ["src", "tests", "server"]
+  "include": ["src", "tests"]
 }

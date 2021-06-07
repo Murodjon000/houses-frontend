@@ -15,20 +15,21 @@ export type userAction = {
     | typeof AUTH_FAILURE
     | typeof GET_USER
     | typeof GET_USER_FAILURE;
-  payload: { user: object } & { errors: object };
+  payload: { user: any } & { errors: any };
 };
 
 export type userState = {
   state:
-    | { user: object }
-    | { loggedinUser: object }
-    | { loginErrors: object }
-    | { signupErrors: object }
-    | { userData: object }
-    | { userError: object };
+    | {}
+    | { user: any }
+    | { loggedinUser: any }
+    | { loginErrors: any }
+    | { signupErrors: any }
+    | { userData: any }
+    | { userError: any };
 };
 
-const user = (state: userState, action: userAction) => {
+const user = (state: any = {}, action: userAction) => {
   if (action.type === ADD_USER) {
     return { ...state, user: action.payload.user };
   }

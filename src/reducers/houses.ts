@@ -15,14 +15,16 @@ type houseAction = {
     | typeof GET_HOUSE_DETAIL_ERRORS
     | typeof GET_HOUSE_ERRORS
     | typeof GET_NEW_HOUSE_ERRORS;
-  payload: { houses: object } & { errors: object } & { house: object };
+  payload: { houses: object } & { errors: object } & {
+    house: object;
+  };
 };
 
-type houseState = {
-  state: object;
-};
+// type houseState = {
+//   state: object;
+// };
 
-const housesRed = (state: houseState, action: houseAction) => {
+const housesRed = (state: any = {}, action: houseAction) => {
   if (action.type === ADD_HOUSES) {
     return { ...state, houses: action.payload.houses };
   }

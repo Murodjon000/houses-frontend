@@ -1,10 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
 import formatToCurrency from '../helpers/currency_format';
 
-// eslint-disable-next-line
-const HouseCard = ({ name, image, price, id }) => (
+const HouseCard: React.FunctionComponent<any> = ({ name, image, price, id }) => (
   <Link to={`/houses/${id}`}>
     <div className="shadow rounded infoCarousel__wrapper-desc-info mx-auto ">
       <img src={image} className="w-100 border-card" alt="..." />
@@ -27,19 +25,5 @@ const HouseCard = ({ name, image, price, id }) => (
     </div>
   </Link>
 );
-
-HouseCard.propTypes = {
-  name: PropTypes.string,
-  image: PropTypes.string,
-  price: PropTypes.number,
-  id: PropTypes.string,
-};
-
-HouseCard.defaultProps = {
-  name: '',
-  image: '',
-  price: 0,
-  id: '',
-};
 
 export default HouseCard;

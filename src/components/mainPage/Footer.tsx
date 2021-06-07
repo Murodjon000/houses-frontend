@@ -1,9 +1,12 @@
+import React from 'react';
 import { navigate } from '@reach/router';
 
-const Footer = () => {
+const Footer: React.FunctionComponent<any> = () => {
   const github = () => navigate('https://github.com/Murodjon000');
   const linkedin = () =>
-    navigate('https://www.linkedin.com/in/murodjon-tursunpulatov-5189481b3/'); //eslint-disable-line
+    navigate(
+      'https://www.linkedin.com/in/murodjon-tursunpulatov-5189481b3/',
+    ); //eslint-disable-line
   const me = () => navigate('http://murodjontursunpulatov.me/');
   return (
     <div className="d-flex flex-column py-5 ">
