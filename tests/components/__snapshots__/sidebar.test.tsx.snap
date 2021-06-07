@@ -1,0 +1,299 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link changes the class when hovered 1`] = `
+<div>
+  <div
+    className="bm-overlay"
+    onClick={[Function]}
+    style={
+      Object {
+        "MozTransform": "translate3d(100%, 0, 0)",
+        "MsTransform": "translate3d(100%, 0, 0)",
+        "OTransform": "translate3d(100%, 0, 0)",
+        "WebkitTransform": "translate3d(100%, 0, 0)",
+        "background": "rgba(0, 0, 0, 0.3)",
+        "height": "100%",
+        "opacity": 0,
+        "position": "fixed",
+        "transform": "translate3d(100%, 0, 0)",
+        "transition": "opacity 0.3s, transform 0s 0.3s",
+        "width": "100%",
+        "zIndex": 1000,
+      }
+    }
+  />
+  <div
+    style={Object {}}
+  >
+    <div
+      className="bm-burger-button"
+      style={
+        Object {
+          "zIndex": 1000,
+        }
+      }
+    >
+      <button
+        id="react-burger-menu-btn"
+        onClick={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        style={
+          Object {
+            "background": "transparent",
+            "border": "none",
+            "cursor": "pointer",
+            "fontSize": 0,
+            "height": "100%",
+            "left": 0,
+            "margin": 0,
+            "padding": 0,
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+            "zIndex": 1,
+          }
+        }
+      >
+        Open Menu
+      </button>
+      <span>
+        <span
+          className="bm-burger-bars"
+          style={
+            Object {
+              "height": "20%",
+              "left": 0,
+              "opacity": 1,
+              "position": "absolute",
+              "right": 0,
+              "top": "0%",
+            }
+          }
+        />
+        <span
+          className="bm-burger-bars"
+          style={
+            Object {
+              "height": "20%",
+              "left": 0,
+              "opacity": 1,
+              "position": "absolute",
+              "right": 0,
+              "top": "40%",
+            }
+          }
+        />
+        <span
+          className="bm-burger-bars"
+          style={
+            Object {
+              "height": "20%",
+              "left": 0,
+              "opacity": 1,
+              "position": "absolute",
+              "right": 0,
+              "top": "80%",
+            }
+          }
+        />
+      </span>
+    </div>
+  </div>
+  <div
+    aria-hidden={true}
+    className="bm-menu-wrap d-flex flex-column justify-content-between"
+    id=""
+    style={
+      Object {
+        "MozTransform": "translate3d(-100%, 0, 0)",
+        "MsTransform": "translate3d(-100%, 0, 0)",
+        "OTransform": "translate3d(-100%, 0, 0)",
+        "WebkitTransform": "translate3d(-100%, 0, 0)",
+        "height": "100%",
+        "position": "fixed",
+        "right": "inherit",
+        "transform": "translate3d(-100%, 0, 0)",
+        "transition": "all 0.5s",
+        "width": "300px",
+        "zIndex": 1100,
+      }
+    }
+  >
+    <div
+      className="bm-menu"
+      style={
+        Object {
+          "boxSizing": "border-box",
+          "height": "100%",
+          "overflow": "auto",
+        }
+      }
+    >
+      <nav
+        className="bm-item-list"
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
+        <div
+          className="bm-item d-flex flex-column mb-5"
+          style={
+            Object {
+              "display": "block",
+            }
+          }
+          tabIndex={-1}
+        >
+          <div>
+            <img
+              alt=""
+              className="d-block mx-auto card-rounded-image"
+              src="https://images.unsplash.com/photo-1603993097397-89c963e325c7?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+            />
+            <h2
+              className="my-2 text-center user-name menu-item"
+            >
+              John
+            </h2>
+          </div>
+          <div
+            className="d-flex flex-column"
+          >
+            <a
+              className="menu-item text-hover my-3"
+              href="/dashboard"
+              onClick={[Function]}
+              style={
+                Object {
+                  "color": "black",
+                }
+              }
+            >
+              Dashboard
+            </a>
+            <a
+              className="menu-item text-hover"
+              href="/houses"
+              onClick={[Function]}
+              style={
+                Object {
+                  "color": "black",
+                }
+              }
+            >
+              Houses
+            </a>
+            <a
+              className="menu-item text-hover my-3"
+              href="/create-house"
+              onClick={[Function]}
+              style={
+                Object {
+                  "color": "black",
+                }
+              }
+            >
+              Create House
+            </a>
+          </div>
+        </div>
+        <div
+          className="bm-item sidebar-link"
+          style={
+            Object {
+              "display": "block",
+            }
+          }
+          tabIndex={-1}
+        >
+          <hr
+            className="mb-2"
+          />
+          <a
+            className="menu-item text-hover"
+            href="/login"
+            onClick={[Function]}
+          >
+            Logout
+          </a>
+        </div>
+      </nav>
+    </div>
+    <div
+      style={Object {}}
+    >
+      <div
+        className="bm-cross-button"
+        style={
+          Object {
+            "height": 24,
+            "position": "absolute",
+            "right": 8,
+            "top": 8,
+            "width": 24,
+          }
+        }
+      >
+        <button
+          id="react-burger-cross-btn"
+          onClick={[Function]}
+          style={
+            Object {
+              "background": "transparent",
+              "border": "none",
+              "cursor": "pointer",
+              "fontSize": 0,
+              "height": "100%",
+              "left": 0,
+              "margin": 0,
+              "padding": 0,
+              "position": "absolute",
+              "top": 0,
+              "width": "100%",
+              "zIndex": 1,
+            }
+          }
+          tabIndex={-1}
+        >
+          Close Menu
+        </button>
+        <span
+          style={
+            Object {
+              "position": "absolute",
+              "right": "14px",
+              "top": "6px",
+            }
+          }
+        >
+          <span
+            className="bm-cross"
+            style={
+              Object {
+                "height": 14,
+                "position": "absolute",
+                "transform": "rotate(45deg)",
+                "width": 3,
+              }
+            }
+          />
+          <span
+            className="bm-cross"
+            style={
+              Object {
+                "height": 14,
+                "position": "absolute",
+                "transform": "rotate(-45deg)",
+                "width": 3,
+              }
+            }
+          />
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

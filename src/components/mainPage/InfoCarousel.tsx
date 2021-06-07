@@ -23,8 +23,9 @@ const InfoCarousel = () => (
           <h3 className="text-center fw-bold">John Hudson</h3>
           <p className="text-sm-gray text-center">Designer</p>
           <p className="text-sm-gray text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
-            doloremque! Harum repellendus vero voluptas exercitationem?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Minus, doloremque! Harum repellendus vero voluptas
+            exercitationem?
           </p>
         </div>
       </Carousel.Item>
@@ -38,8 +39,9 @@ const InfoCarousel = () => (
           <h3 className="text-center fw-bold">Dean Hudson</h3>
           <p className="text-sm-gray text-center">Lawyer</p>
           <p className="text-sm-gray text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
-            doloremque! Harum repellendus vero voluptas exercitationem?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Minus, doloremque! Harum repellendus vero voluptas
+            exercitationem?
           </p>
         </div>
       </Carousel.Item>
@@ -53,8 +55,9 @@ const InfoCarousel = () => (
           <h3 className="text-center fw-bold">Emma Watson</h3>
           <p className="text-sm-gray text-center my-2">Designer</p>
           <p className="text-sm-gray text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
-            doloremque! Harum repellendus vero voluptas exercitationem?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Minus, doloremque! Harum repellendus vero voluptas
+            exercitationem?
           </p>
         </div>
       </Carousel.Item>

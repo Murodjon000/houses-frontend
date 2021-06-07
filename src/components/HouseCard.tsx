@@ -3,6 +3,7 @@ import { Link } from '@reach/router';
 import formatToCurrency from '../helpers/currency_format';
 
 const HouseCard: React.FunctionComponent<any> = ({ name, image, price, id }) => (
+
   <Link to={`/houses/${id}`}>
     <div className="shadow rounded infoCarousel__wrapper-desc-info mx-auto ">
       <img src={image} className="w-100 border-card" alt="..." />

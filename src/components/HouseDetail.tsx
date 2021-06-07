@@ -24,6 +24,7 @@ const HouseDetail: React.FunctionComponent<any> = ({
 }) => {
   useEffect(() => {
     apiGetCalls(getHouse, id, getHouseError);
+    console.log(house, 'id', id);
   }, []);
 
   if (house.length === 0) {

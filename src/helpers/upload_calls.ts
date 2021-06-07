@@ -5,9 +5,9 @@ import { API_BASE, HOUSES, PRESIGNED_URL, USERS } from './api_calls';
 import { fileChecksum } from './file_reader';
 
 const createPresignedUrl = async (
-  currentFile:any,
-  byte_size:any,
-  checksum:any,
+  currentFile: any,
+  byte_size: any,
+  checksum: any,
 ) => {
   const file = {
     filename: currentFile.name,
@@ -26,7 +26,11 @@ const createPresignedUrl = async (
   return result;
 };
 
-const createUserSign = async (userInfo:any, success:any, failure:any) => {
+const createUserSign = async (
+  userInfo: any,
+  success: any,
+  failure: any,
+) => {
   const { username, email, password, password_confirmation, image } =
     userInfo;
 
@@ -76,7 +80,11 @@ const createUserSign = async (userInfo:any, success:any, failure:any) => {
     .catch((error) => failure(error.response));
 };
 
-const apiGetHouse = async (houseInfo:any, success:any, failure:any) => {
+const apiGetHouse = async (
+  houseInfo: any,
+  success: any,
+  failure: any,
+) => {
   const { name, location, rooms, date, price, description, image } =
     houseInfo;
 

@@ -12,18 +12,12 @@ const App = () => (
   <div id="outer-container">
     <Router>
       <RouterPage path="/" pageComponent={<Main />} />
-      <RouterPage path="/dashboard" pageComponent={<Dashboard />} />
-      <RouterPage path="/houses" pageComponent={<Houses />} />
-      <RouterPage
-        path="/create-house"
-        pageComponent={<CreateHouse />}
-      />
-      <RouterPage
-        path="/houses/:id"
-        pageComponent={<HouseDetail />}
-      />
-      <RouterPage path="/login" pageComponent={<Login />} />
-      <RouterPage path="/signup" pageComponent={<SignUp />} />
+      <Dashboard path="/dashboard" />
+      <Houses path="/houses" />
+      <CreateHouse path="/create-house" />
+      <HouseDetail path="/houses/:id" />
+      <Login path="/login" />
+      <SignUp path="/signup" />
     </Router>
   </div>
 );

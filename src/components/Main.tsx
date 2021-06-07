@@ -6,6 +6,8 @@ import InfoSecond from './mainPage/InfoSecond';
 import InfoThird from './mainPage/InfoThird';
 import InfoCarousel from './mainPage/InfoCarousel';
 import Footer from './mainPage/Footer';
+import houses from '../assets/house_first.svg';
+import houses2 from '../assets/houses.png';
 
 const Main = () => {
   if (localStorage.getItem('token')) {
@@ -19,7 +21,9 @@ const Main = () => {
           <h1 className="text-font-lg text-white font-weight-bold">
             Find housing
           </h1>
-          <h1 className="text-font-lg text-white font-weight-bold">anywhere</h1>
+          <h1 className="text-font-lg text-white font-weight-bold">
+            anywhere
+          </h1>
 
           <p className="text-sm mt-3">
             The best offers for you at any point of your journey.Wher-
@@ -34,8 +38,8 @@ const Main = () => {
           </div>
         </div>
       </div>
-      <InfoFirst />
-      <InfoSecond />
+      <InfoFirst image={houses} />
+      <InfoSecond image={houses2} />
       <InfoCarousel />
       <InfoThird />
       <Footer />

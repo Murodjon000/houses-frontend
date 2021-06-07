@@ -1,8 +1,9 @@
+import * as React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Sidebar from '../../components/Sidebar';
-import HouseCard from '../../components/HouseCard';
-import FavouritesCard from '../../components/FavouritesCard';
+import Sidebar from '../../src/components/Sidebar';
+import HouseCard from '../../src/components/HouseCard';
+import FavouritesCard from '../../src/components/FavouritesCard';
 
 configure({ adapter: new Adapter() });
 
@@ -32,9 +33,11 @@ const shallowSetup = () => {
     },
   };
 
-  const enzymeWrapper = shallow(<Sidebar {...props} />); // eslint-disable-line
-  const houseWrapper = shallow(<HouseCard {...props.houses} />); // eslint-disable-line
-  const favouriteWrapper = shallow(<FavouritesCard {...props.favourites} />); // eslint-disable-line
+  const enzymeWrapper = shallow(<Sidebar {...props} />);
+  const houseWrapper = shallow(<HouseCard {...props.houses} />);
+  const favouriteWrapper = shallow(
+    <FavouritesCard {...props.favourites} />,
+  );
 
   return {
     props,
@@ -48,7 +51,9 @@ test('should render Sidebar component', () => {
   const { enzymeWrapper, props } = shallowSetup();
 
   expect(enzymeWrapper.find('.user-name').text()).toBe(props.name);
-  expect(enzymeWrapper.find('img').hasClass('card-rounded-image')).toBe(true);
+  expect(
+    enzymeWrapper.find('img').hasClass('card-rounded-image'),
+  ).toBe(true);
 });
 
 export default shallowSetup;
