@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Dispatch, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { navigate } from '@reach/router';
 import { Carousel, Spinner } from 'react-bootstrap';
@@ -7,19 +7,25 @@ import HouseCard from './HouseCard';
 import { addHouses, getHousesErrors } from '../actions';
 import Header from './DashboardHeader';
 
-const Houses: React.FunctionComponent<any> = ({ houses = [], getHouses, getHousesError, errors }) => {
+const Houses: React.FunctionComponent<any> = ({
+  houses = [],
+  getHouses,
+  getHousesError,
+  errors,
+}) => {
   if (!localStorage.getItem('token')) {
-    navigate('/');
+    void navigate('/');
   }
 
   useEffect(() => {
-    apiGetCalls(getHouses, '', getHousesError);
+    void apiGetCalls(getHouses, '', getHousesError);
   }, []);
 
   if (errors) {
     return <h1>Houses not found</h1>;
   }
 
+ 
   if (houses.length === 0) {
     return (
       <div className="d-flex justify-content-center align-items-center spinner__wrapper">
@@ -54,14 +60,21 @@ const Houses: React.FunctionComponent<any> = ({ houses = [], getHouses, getHouse
   );
 };
 
-const mapStateToProps = (state:any) => ({
+type stateType = {
+  houses: {
+    houses: string[];
+    errors: string[];
+  };
+};
+
+const mapStateToProps = (state: stateType) => ({
   houses: state.houses.houses,
   errors: state.houses.errors,
 });
 
-const mapDispatchToProps = (dispatch:any) => ({
-  getHouses: (houses:any) => dispatch(addHouses(houses)),
-  getHousesError: (errors:any) => dispatch(getHousesErrors(errors)),
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+  getHouses: (houses: any) => dispatch(addHouses(houses)),
+  getHousesError: (errors: any) => dispatch(getHousesErrors(errors)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Houses);

@@ -17,18 +17,10 @@ declare global {
   }
 }
 
-// const composeEnhancers = // eslint-disable-line
-//   typeof window === 'object' &&
-//   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-//     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
-//     : compose;
-
-// const enhancer = composeEnhancers(applyMiddleware(thunk));
-
 const store = createStore(reducer, applyMiddleware(thunk));
 
 window.flash = (message: any, type = 'success') =>
-  Bus.emit('flash', { message, type }); // eslint-disable-line
+  Bus.emit('flash', { message, type });
 
 const RootApp = () => (
   <React.StrictMode>

@@ -7,6 +7,7 @@ import Header from './DashboardHeader';
 import Flash from './Flash';
 import HouseForm from './CreateHouseForm';
 
+
 const CreateHouse: React.FunctionComponent<any> = ({
   getHouses,
   getHousesError,
@@ -20,7 +21,7 @@ const CreateHouse: React.FunctionComponent<any> = ({
   const [description, setDescription] = useState('');
   const [file, setFile] = useState<any>('');
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (file !== '') {
       const house = {
@@ -62,7 +63,6 @@ const CreateHouse: React.FunctionComponent<any> = ({
               <div>
                 <Alert key="6" variant="danger">
                   {errors.data.message.map((item: any) => (
-                    // eslint-disable-next-line react/jsx-key
                     <li key={Date.now() * Math.random()}>{item}</li>
                   ))}
                 </Alert>
@@ -174,7 +174,13 @@ const CreateHouse: React.FunctionComponent<any> = ({
   );
 };
 
-const mapStateToProps = (state: any) => ({
+type statType = {
+  houses: {
+    newHouse: string[];
+    newHouseError: string[];
+  };
+};
+const mapStateToProps = (state: statType) => ({
   house: state.houses.newHouse,
   errors: state.houses.newHouseError,
 });

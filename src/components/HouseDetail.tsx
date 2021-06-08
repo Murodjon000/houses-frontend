@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Dispatch, ErrorInfo, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { navigate } from '@reach/router';
 import { Spinner } from 'react-bootstrap';
@@ -23,8 +23,7 @@ const HouseDetail: React.FunctionComponent<any> = ({
   errors,
 }) => {
   useEffect(() => {
-    apiGetCalls(getHouse, id, getHouseError);
-    console.log(house, 'id', id);
+    void apiGetCalls(getHouse, id, getHouseError);
   }, []);
 
   if (house.length === 0) {
@@ -42,18 +41,20 @@ const HouseDetail: React.FunctionComponent<any> = ({
   }
 
   if (!localStorage.getItem('token')) {
-    navigate('/');
+    void navigate('/');
   }
 
   const handleSubmit = () => {
     addFavourites('favourite', id)
       .then((response) => {
         if (response.status === 200) {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-call
           window.flash('House successfuly added to favourites!');
         }
         return response;
       })
-      .catch((error) => {
+      .catch((error: ErrorInfo) => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         window.flash('House was added to favourites!', 'danger');
         return error;
       });
@@ -63,7 +64,6 @@ const HouseDetail: React.FunctionComponent<any> = ({
     <div>
       <Header />
       <div className="min-vh-100 bg-main p-3">
-        {/* <div id="success-wrapper" /> */}
         <Flash />
         <div className="shadow no-gutters rounded bg-white mb-3 row infoCarousel__wrapper-desc-info-detail mx-auto">
           <div className="col-md-6">
@@ -150,12 +150,19 @@ const HouseDetail: React.FunctionComponent<any> = ({
   );
 };
 
-const mapStateToProps = (state: any) => ({
+type stateType = {
+  houses: {
+    house: string[];
+    houseError: string[];
+  };
+};
+
+const mapStateToProps = (state: stateType) => ({
   house: state.houses.house,
   errors: state.houses.houseError,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   getHouse: (house: any) => dispatch(addHouseDetails(house)),
   getHouseError: (error: any) =>
     dispatch(getHousesDetailsErrors(error)),

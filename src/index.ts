@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './ind';
+import App from './main';
 
 function initializeReactApp() {
   const appContainer = document.getElementById('root');

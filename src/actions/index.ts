@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 export const ADD_USER = 'ADD_USER';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAILURE = 'AUTH_FAILURE';
@@ -11,62 +12,66 @@ export const ADD_HOUSES_DETAILS = 'ADD_HOUSES_DETAILS';
 export const CREATE_NEW_HOUSE = 'CREATE_NEW_HOUSE';
 export const GET_NEW_HOUSE_ERRORS = 'GET_NEW_HOUSE_ERRORS';
 
-export const createUser = (user: any) => ({
+export const createUser = (user: Record<string, unknown>) => ({
   type: ADD_USER,
   payload: { user },
 });
 
-export const authSuccess = (user: any) => ({
+export const authSuccess = (user: Record<string, unknown>) => ({
   type: AUTH_SUCCESS,
   payload: { user },
 });
 
-export const getCurrentUser = (user: any) => ({
+export const getCurrentUser = (user: Record<string, unknown>) => ({
   type: GET_USER,
   payload: { user },
 });
 
-export const getUserFailure = (errors: any) => ({
+export const getUserFailure = (errors: Record<string, unknown>) => ({
   type: GET_USER_FAILURE,
   payload: { errors },
 });
 
-export const authFailure = (errors: any) => ({
+export const authFailure = (errors: Record<string, unknown>) => ({
   type: AUTH_FAILURE,
   payload: { errors },
 });
 
-export const signupFailure = (errors: any) => ({
+export const signupFailure = (errors: Record<string, unknown>) => ({
   type: SIGNUP_FAILURE,
   payload: { errors },
 });
 
-export const addHouses = (houses: any) => ({
+export const addHouses = (houses: Record<string, unknown>) => ({
   type: ADD_HOUSES,
   payload: { houses },
 });
 
-export const getHousesErrors = (errors: any) => ({
+export const getHousesErrors = (errors: Record<string, unknown>) => ({
   type: GET_HOUSE_ERRORS,
   payload: { errors },
 });
 
-export const addHouseDetails = (house: any) => ({
+export const addHouseDetails = (house: Record<string, unknown>) => ({
   type: ADD_HOUSES_DETAILS,
   payload: { house },
 });
 
-export const getHousesDetailsErrors = (errors: any) => ({
+export const getHousesDetailsErrors = (
+  errors: Record<string, unknown>,
+) => ({
   type: GET_HOUSE_DETAIL_ERRORS,
   payload: { errors },
 });
 
-export const createNewHouse = (house: any) => ({
+export const createNewHouse = (house: Record<string, unknown>) => ({
   type: CREATE_NEW_HOUSE,
   payload: { house },
 });
 
-export const getNewHouseError = (errors: any) => ({
+export const getNewHouseError = (
+  errors: Record<string, unknown>,
+) => ({
   type: GET_NEW_HOUSE_ERRORS,
   payload: { errors },
 });

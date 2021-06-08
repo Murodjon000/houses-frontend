@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Dispatch, ErrorInfo, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { navigate } from '@reach/router';
 import { Spinner } from 'react-bootstrap';
@@ -15,11 +15,11 @@ const Dashboard: React.FunctionComponent<any> = ({
   getUserError,
 }) => {
   useEffect(() => {
-    getUser(getUserData, getUserError);
+    void getUser(getUserData, getUserError);
   }, [user]);
 
   if (!localStorage.getItem('token')) {
-    navigate('/');
+    void navigate('/');
   }
 
   if (!user) {
@@ -36,15 +36,17 @@ const Dashboard: React.FunctionComponent<any> = ({
     return <h1>User not found.Please sign in or sign up!</h1>;
   }
 
-  const handleRemove = (id: any) => {
+  const handleRemove = (id: string) => {
     addFavourites('unfavourite', id)
       .then((response) => {
         if (response.status === 200) {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-call
           window.flash('House successfuly removed from favourites!');
         }
         return response;
       })
-      .catch((error) => {
+      .catch((error: ErrorInfo) => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         window.flash(
           'Something went wrong.Plese try again!',
           'danger',
@@ -84,12 +86,19 @@ const Dashboard: React.FunctionComponent<any> = ({
   );
 };
 
-const mapStateToProps = (state: any) => ({
+type stateType = {
+  user: {
+    userData: string[];
+    userError: string[];
+  };
+};
+
+const mapStateToProps = (state: stateType) => ({
   user: state.user.userData,
   errors: state.user.userError,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   getUserData: (user: any) => dispatch(getCurrentUser(user)),
   getUserError: (errors: any) => dispatch(getUserFailure(errors)),
 });

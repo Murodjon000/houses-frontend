@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Dispatch, useState } from 'react';
 import { connect } from 'react-redux';
 import { Alert } from 'react-bootstrap';
 import { Link } from '@reach/router';
@@ -13,7 +13,7 @@ const Login: React.FunctionComponent<any> = ({
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleUserSubmit = (e: any) => {
+  const handleUserSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const user = {
       email,
@@ -75,11 +75,17 @@ const Login: React.FunctionComponent<any> = ({
   );
 };
 
-const mapStateToProps = (state: any) => ({
+type stateError = {
+  user: {
+    loginErrors: string[];
+  };
+};
+
+const mapStateToProps = (state: stateError) => ({
   errors: state.user.loginErrors,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   loginSuccess: (user: any) => dispatch(authSuccess(user)),
   authError: (error: any) => dispatch(authFailure(error)),
 });

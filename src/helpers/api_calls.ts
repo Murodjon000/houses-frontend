@@ -2,17 +2,18 @@ import axios from 'axios';
 import { navigate } from '@reach/router';
 import jwtDecode from 'jwt-decode';
 
-export const API_BASE: string = 'http://127.0.0.1:3000/api/v1/';
-export const SIGN_UP: string = 'users';
-export const PRESIGNED_URL: string = 'presigned_url';
-export const USERS: string = 'users';
-export const HOUSES: string = 'houses';
-const LOG_IN: string = 'auth';
-const FAVOURITE: string = 'favourite';
-const UNFAVOURITE: string = 'unfavourite';
+export const API_BASE = 'http://127.0.0.1:3000/api/v1/';
+export const SIGN_UP = 'users';
+export const PRESIGNED_URL = 'presigned_url';
+export const USERS = 'users';
+export const HOUSES = 'houses';
+const LOG_IN = 'auth';
+const FAVOURITE = 'favourite';
+const UNFAVOURITE = 'unfavourite';
+
 
 const authCalls = (
-  authType: any,
+  authType: string,
   user: any,
   success: any,
   failure: any,
@@ -45,20 +46,21 @@ const authCalls = (
     .catch((error: any) => failure(error.response));
 };
 
-const addFavourites = (authType: any, id: any) => {
+const addFavourites = (authType: string, id: string) => {
   let API_END: string;
   if (authType === 'favourite') {
     API_END = FAVOURITE;
   } else {
     API_END = UNFAVOURITE;
   }
-  return axios.post(
+  axios.post(
     `${API_BASE}${HOUSES}/${id}/${API_END}`,
     {
       house_id: id,
     },
     {
       headers: {
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         Authorization: `token ${localStorage.getItem('token')}`,
       },
     },
@@ -81,6 +83,7 @@ const getUser = async (success: any, failure?: any) => {
   try {
     const houses = await axios.get(`${API_BASE}${USERS}/${userId}`, {
       headers: {
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         Authorization: `token ${localStorage.getItem('token')}`,
       },
     });
@@ -90,14 +93,12 @@ const getUser = async (success: any, failure?: any) => {
   }
 };
 
-const apiGetCalls = async (
-  success: any,
-  id: any = '',
-  failure: any,
-) => {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+const apiGetCalls = async (success: any, id = '', failure: any) => {
   try {
     const houses = await axios.get(`${API_BASE}${HOUSES}/${id}`, {
       headers: {
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         Authorization: `token ${localStorage.getItem('token')}`,
       },
     });

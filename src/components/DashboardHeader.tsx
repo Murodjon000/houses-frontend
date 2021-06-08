@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Dispatch, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Sidebar from './Sidebar';
 import { getUser } from '../helpers/api_calls';
@@ -9,7 +9,7 @@ const Header: React.FunctionComponent<any> = ({
   getUserData,
 }) => {
   useEffect(() => {
-    getUser(getUserData);
+    void getUser(getUserData);
   }, []);
 
   if (!user) {
@@ -21,7 +21,7 @@ const Header: React.FunctionComponent<any> = ({
         <Sidebar
           pageWrapId="page-wrap"
           outerContainerId="outer-container"
-          name={user ? user.user.username : 'Loading...'}
+          name={user.user.username}
           image={user.avatar_url}
         />
       </div>
@@ -40,11 +40,17 @@ const Header: React.FunctionComponent<any> = ({
   );
 };
 
-const mapStateToProps = (state: any) => ({
+type stateType = {
+  user: {
+    userData: string[];
+  };
+};
+
+const mapStateToProps = (state: stateType) => ({
   user: state.user.userData,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   getUserData: (user: any) => dispatch(getCurrentUser(user)),
 });
 

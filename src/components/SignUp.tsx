@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Dispatch, useState } from 'react';
 import { Link } from '@reach/router';
 import { Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -19,7 +19,7 @@ const SignUp: React.FunctionComponent<any> = ({
     useState('');
   const [file, setFile] = useState<any>('');
 
-  const handleUserSubmit = (e: any) => {
+  const handleUserSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (file !== '') {
@@ -122,11 +122,17 @@ const SignUp: React.FunctionComponent<any> = ({
   );
 };
 
-const mapStateToProps = (state: any) => ({
+type stateTypes = {
+  user: {
+    signupErrors: string[];
+  };
+};
+
+const mapStateToProps = (state: stateTypes) => ({
   errors: state.user.signupErrors,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   addUser: (user: any) => dispatch(createUser(user)),
   authError: (error: any) => dispatch(signupFailure(error)),
 });

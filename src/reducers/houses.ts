@@ -15,16 +15,23 @@ type houseAction = {
     | typeof GET_HOUSE_DETAIL_ERRORS
     | typeof GET_HOUSE_ERRORS
     | typeof GET_NEW_HOUSE_ERRORS;
-  payload: { houses: object } & { errors: object } & {
-    house: object;
+  payload: { houses: Record<string, unknown> } & {
+    errors: Record<string, unknown>;
+  } & {
+    house: Record<string, unknown>;
   };
 };
 
-// type houseState = {
-//   state: object;
-// };
+type houseState = {
+  state: Record<string, unknown>;
+};
 
-const housesRed = (state: any = {}, action: houseAction) => {
+const initialValue = { state: {} };
+
+const housesRed = (
+  state: houseState = initialValue,
+  action: houseAction,
+) => {
   if (action.type === ADD_HOUSES) {
     return { ...state, houses: action.payload.houses };
   }
