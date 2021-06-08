@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should correctly render Details page 1`] = `
+<div
+  className=" info__wrapper pt-5 px-4 bg-blue-prime"
+>
+  <div
+    className="row align-items-center"
+  >
+    <div
+      className=" col-md-6 info__wrapper-image"
+    >
+      <img
+        alt="Houes"
+        src="https://images.unsplash.com/photo-1603993097397-89c963e325c7?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+      />
+    </div>
+    <div
+      className="col-md-6 info__wrapper-info "
+    >
+      <h1
+        className="text-lg-black"
+      >
+        Only best places for your rest
+      </h1>
+      <p
+        className="text-sm-gray mb-5 mt-3"
+      >
+        More than ten thousand houses at your disposal.Only the best and checked landlords.We will find best place for you and the conditions for a safe transaction and comfortable stay.
+      </p>
+      <a
+        className="main-btn mt-4"
+        href="/signup"
+        onClick={[Function]}
+      >
+        START FREE
+      </a>
+    </div>
+  </div>
+</div>
+`;
