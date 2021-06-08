@@ -14,18 +14,17 @@ const Houses: React.FunctionComponent<any> = ({
   errors,
 }) => {
   if (!localStorage.getItem('token')) {
-    void navigate('/');
+    navigate('/');
   }
 
   useEffect(() => {
-    void apiGetCalls(getHouses, '', getHousesError);
+    apiGetCalls(getHouses, '', getHousesError);
   }, []);
 
   if (errors) {
     return <h1>Houses not found</h1>;
   }
 
- 
   if (houses.length === 0) {
     return (
       <div className="d-flex justify-content-center align-items-center spinner__wrapper">
@@ -42,7 +41,7 @@ const Houses: React.FunctionComponent<any> = ({
       <div className="houses__wrapper">
         <div className="p-2 my-3">
           <Carousel className="mb-3">
-            {houses.map((house:any) => (
+            {houses.map((house: any) => (
               <Carousel.Item key={house.id}>
                 <HouseCard
                   key={house.id}

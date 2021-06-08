@@ -11,7 +11,7 @@ import houses2 from '../assets/houses.png';
 
 const Main = () => {
   if (localStorage.getItem('token')) {
-    void navigate('/dashboard');
+    navigate('/dashboard');
   }
   return (
     <div>

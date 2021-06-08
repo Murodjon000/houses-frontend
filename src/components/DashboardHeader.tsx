@@ -9,7 +9,7 @@ const Header: React.FunctionComponent<any> = ({
   getUserData,
 }) => {
   useEffect(() => {
-    void getUser(getUserData);
+    getUser(getUserData);
   }, []);
 
   if (!user) {

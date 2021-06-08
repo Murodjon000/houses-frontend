@@ -15,11 +15,11 @@ const Dashboard: React.FunctionComponent<any> = ({
   getUserError,
 }) => {
   useEffect(() => {
-    void getUser(getUserData, getUserError);
+     getUser(getUserData, getUserError);
   }, [user]);
 
   if (!localStorage.getItem('token')) {
-    void navigate('/');
+     navigate('/');
   }
 
   if (!user) {
@@ -38,7 +38,7 @@ const Dashboard: React.FunctionComponent<any> = ({
 
   const handleRemove = (id: string) => {
     addFavourites('unfavourite', id)
-      .then((response) => {
+      .then((response:any) => {
         if (response.status === 200) {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-call
           window.flash('House successfuly removed from favourites!');

@@ -33,9 +33,8 @@
 
 ## Built with
 
-- JavaScript
+- TypeScript
 - React
-- JSX
 - SCSS
 - Node
 - Redux

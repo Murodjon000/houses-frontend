@@ -23,7 +23,7 @@ const HouseDetail: React.FunctionComponent<any> = ({
   errors,
 }) => {
   useEffect(() => {
-    void apiGetCalls(getHouse, id, getHouseError);
+    apiGetCalls(getHouse, id, getHouseError);
   }, []);
 
   if (house.length === 0) {
@@ -41,12 +41,12 @@ const HouseDetail: React.FunctionComponent<any> = ({
   }
 
   if (!localStorage.getItem('token')) {
-    void navigate('/');
+    navigate('/');
   }
 
   const handleSubmit = () => {
     addFavourites('favourite', id)
-      .then((response) => {
+      .then((response: any) => {
         if (response.status === 200) {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-call
           window.flash('House successfuly added to favourites!');

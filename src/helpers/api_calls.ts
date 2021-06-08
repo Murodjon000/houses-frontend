@@ -11,7 +11,6 @@ const LOG_IN = 'auth';
 const FAVOURITE = 'favourite';
 const UNFAVOURITE = 'unfavourite';
 
-
 const authCalls = (
   authType: string,
   user: any,
@@ -53,7 +52,7 @@ const addFavourites = (authType: string, id: string) => {
   } else {
     API_END = UNFAVOURITE;
   }
-  axios.post(
+  return axios.post(
     `${API_BASE}${HOUSES}/${id}/${API_END}`,
     {
       house_id: id,
