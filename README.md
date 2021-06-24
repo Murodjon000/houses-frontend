@@ -1,6 +1,6 @@
 # Find your house
 
-- This the the frontend part for the capstone project of Microverse main technical curriculum.
+- This the frontend part for the capstone project of Microverse main technical curriculum.
   This project is an house finding app where users are able to see a list of different types of houses and can add them to their favourites. Users can see the details of a particular house by clicking the houses.
 
 ### Main page
